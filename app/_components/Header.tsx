@@ -2,7 +2,7 @@ import React from 'react'
 
 function Header() {
   return (
-    <div>
+    <div className='bg-background dark:bg-dark-background'>
       I am Header
     </div>
   )
