@@ -1,52 +1,24 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-background: #F7F7F7;     
+  --color-card: #FFFFFF;             
+  --color-text-primary: #1A1A1A;     
+  --color-text-muted: #A0A0A0;     
+  --color-button: #FF6B5A;            
+  --color-accent-indigo: #4C5FD5;    
+  --color-accent-violet: #6E56CF;   
+  --color-accent-teal: #00C49A;     
+  --color-accent-blue: #0095FF;     
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-dark-background: #121212;       
+  --color-dark-card: #1E1E1E;             
+  --color-text-dark-primary: #FFFFFF;     
+  --color-text-dark-muted: #AAAAAA;    
+  --color-dark-button: #FF6B5A;       
+  --color-accent-dark-indigo: #4C5FD5;   
+  --color-accent-dark-violet: #A891FF;     
+  --color-accent-dark-teal: #00E0B8;   
+  --color-accent-dark-blue: #4BA3FF;      
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* TODO */
-/* LIGHT AND DARK THEME */
-/* colors: {
-  background: '#F7F7F7',     // bg-main
-  card: '#FFFFFF',           // bg-card
-  text: '#1A1A1A',           // text-primary
-  text-muted: '#A0A0A0',     // text-muted
-  button: '#FF6B5A',         // btn-primary
-  accent-indigo: '#4C5FD5',  // accent-indigo
-  accent-violet: '#6E56CF',  // accent-violet
-  accent-teal: '#00C49A',    // accent-teal
-  accent-blue: '#0095FF',    // accent-blue
-}
-
-colors: {
-  background: '#121212',     // bg-main
-  card: '#1E1E1E',           // bg-card
-  text: '#FFFFFF',           // text-primary
-  text-muted: '#AAAAAA',     // text-muted
-  button: '#FF6B5A',         // btn-primary
-  accent-indigo: '#4C5FD5',  // accent-indigo
-  accent-violet: '#A891FF',  // accent-violet
-  accent-teal: '#00E0B8',    // accent-teal
-  accent-blue: '#4BA3FF',    // accent-blue
-} */
