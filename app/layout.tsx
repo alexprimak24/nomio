@@ -26,8 +26,8 @@ export default function RootLayout({
           <Header />
           <div className="grid flex-1 px-8 py-12">
             <main className="max-w-7x mx-auto w-full">
-            <ThemeProvider theme={theme}>
-              {children}
+              <ThemeProvider theme={theme}>
+                {children}
               </ThemeProvider>
             </main>
           </div>
