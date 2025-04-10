@@ -1,9 +1,10 @@
 import React from 'react'
+import Logo from './Logo'
 
 function Header() {
   return (
-    <div className='bg-background dark:bg-dark-background'>
-      I am Header
+    <div className='px-8 py-5 border-b border-border dark:border-dark-border'>
+      <Logo/>
     </div>
   )
 }
