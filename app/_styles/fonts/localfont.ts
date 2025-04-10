@@ -23,4 +23,5 @@ export const sfPro = localFont({
       style: 'normal',
     },
   ],
+  variable: "--font-sfPro"
 })

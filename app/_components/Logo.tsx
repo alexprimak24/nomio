@@ -14,7 +14,7 @@ function Logo() {
       quality={100}
       />
 
-      <span className='text-xl font-bold'>Nomio</span>
+      <span className='text-xl font-bold hidden sm:block'>Nomio</span>
     </Link>
   )
 }

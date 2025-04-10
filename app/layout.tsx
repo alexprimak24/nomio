@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import Header from '@/app/_components/Header'
 import { sfPro } from '@/app/_styles/fonts/localfont'
+import theme from '@/app/theme'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
+import { ThemeProvider } from '@mui/material/styles'
 import '@/app/_styles/globals.css'
-
-
 
 export const metadata: Metadata = {
   title: {
@@ -19,14 +20,18 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${sfPro.className} bg-background dark:bg-dark-background text-text-primary dark:text-text-dark-primary flex flex-col min-h-screen relative`}>
-        <Header />
-        <div className="grid flex-1 px-8 py-12">
-          <main className="max-w-7x mx-auto w-full">
-            {children}
-          </main>
-        </div>
+    <html lang="en" className={sfPro.className}>
+      <body className="bg-background dark:bg-dark-background text-text-primary dark:text-text-dark-primary flex flex-col min-h-svh relative">
+        <AppRouterCacheProvider>
+          <Header />
+          <div className="grid flex-1 px-8 py-12">
+            <main className="max-w-7x mx-auto w-full">
+            <ThemeProvider theme={theme}>
+              {children}
+              </ThemeProvider>
+            </main>
+          </div>
+        </AppRouterCacheProvider>
       </body>
     </html>
   )
