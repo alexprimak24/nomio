@@ -1,4 +1,3 @@
-import draftAvatar from '@/public/draftAvatar.jpg'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -15,7 +14,7 @@ function Navigation() {
         {/* TODO: display login buttion if there is not user */}
         <Link href="/profile">
           <Image
-            src={draftAvatar}
+            src="/draftAvatar.jpg"
             alt="User Logo"
             fill
             quality={100}

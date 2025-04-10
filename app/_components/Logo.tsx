@@ -1,4 +1,3 @@
-import logo from '@/public/logo.png'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -7,7 +6,7 @@ function Logo() {
   return (
     <Link href="/" className="z-10 flex items-center gap-4">
       <Image
-        src={logo}
+        src="/logo.png"
         alt="Nomio Logo"
         height="40"
         width="40"
