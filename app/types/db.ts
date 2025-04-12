@@ -20,6 +20,14 @@ export type DishIngredient = Tables<'dish_ingredients'>
 export type NewDishIngredient = TablesInsert<'dish_ingredients'>
 export type DishIngredientUpdate = TablesUpdate<'dish_ingredients'>
 
+export type DishCategories = Tables<'dish_categories'>
+export type NewDishCategories = TablesInsert<'dish_categories'>
+export type DishCategoriesUpdate = TablesUpdate<'dish_categories'>
+
 export type Customer = Tables<'customers'>
 export type NewCustomer = TablesInsert<'customers'>
 export type CustomerUpdate = TablesUpdate<'customers'>
+
+export type Categories = Tables<'categories'>
+export type NewCategories = TablesInsert<'categories'>
+export type CategoriesUpdate = TablesUpdate<'categories'>

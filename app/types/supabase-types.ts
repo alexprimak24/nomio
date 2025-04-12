@@ -6,8 +6,7 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
-// eslint-disable-next-line ts/consistent-type-definitions
-export type Database = {
+export interface Database {
   graphql_public: {
     Tables: {
       [_ in never]: never
@@ -35,6 +34,24 @@ export type Database = {
   }
   public: {
     Tables: {
+      categories: {
+        Row: {
+          created_at: string
+          id: number
+          name: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          name?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          name?: string | null
+        }
+        Relationships: []
+      }
       customers: {
         Row: {
           created_at: string
@@ -55,6 +72,42 @@ export type Database = {
           phone_number?: string | null
         }
         Relationships: []
+      }
+      dish_categories: {
+        Row: {
+          category: number | null
+          created_at: string
+          dish_id: number | null
+          id: number
+        }
+        Insert: {
+          category?: number | null
+          created_at?: string
+          dish_id?: number | null
+          id?: number
+        }
+        Update: {
+          category?: number | null
+          created_at?: string
+          dish_id?: number | null
+          id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'category_dish_id_fkey'
+            columns: ['dish_id']
+            isOneToOne: false
+            referencedRelation: 'dishes'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'dish_categories_category_fkey'
+            columns: ['category']
+            isOneToOne: false
+            referencedRelation: 'categories'
+            referencedColumns: ['id']
+          },
+        ]
       }
       dish_ingredients: {
         Row: {
