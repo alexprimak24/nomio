@@ -1,4 +1,5 @@
 import { getCategoryDishes } from '@/app/_lib/db/queries'
+import { slugify } from '@/app/_utils/slugify'
 import { Box, List, ListItem } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
@@ -8,22 +9,21 @@ interface PageProps {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-    const { category } = await params;
-    return { title: `${category[0].toUpperCase() + category.slice(1)}` };
-  }
-
+  const { category } = await params
+  return { title: `${category[0].toUpperCase() + category.slice(1)}` }
+}
 
 async function Page({ params }: PageProps) {
-  const { category } = await params
-  const categoryDishes = await getCategoryDishes(category)
+  const { category: categoryTitle } = await params
+  console.log(categoryTitle)
+  const categoryDishes = await getCategoryDishes(categoryTitle)
 
   return (
     <Box className="w-full max-w-2xl rounded-xl shadow-lg p-2 border border-border dark:border-dark-border bg-background dark:bg-dark-background text-text-primary dark:text-text-dark-primary transition-all duration-300 ease-in-out px-5 py-2 text-center">
       <List className="w-full rounded-md text-center flex items-center justify-center flex-col gap-5">
         {categoryDishes.map(category => (
           <Link
-            // CHANGE IT
-            href="/menu"
+            href={`/menu/${categoryTitle}/${slugify(category.name)}`}
             key={category.id}
             className={`text-center w-full
               border border-border dark:border-dark-border min-h-16
