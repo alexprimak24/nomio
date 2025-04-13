@@ -13,7 +13,7 @@ interface PageProps {
 
 async function Page({ params }: PageProps) {
     const { categoryId } = await params;
-    console.log(categoryId)
+    // console.log(categoryId)
     const categoryDishes = await getCategoryDishes(categoryId)
     console.log(categoryDishes)
 // eslint-disable-next-line no-console
