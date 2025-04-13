@@ -39,16 +39,19 @@ export interface Database {
           created_at: string | null
           id: number
           name: string
+          slug: string
         }
         Insert: {
           created_at?: string | null
           id?: number
           name: string
+          slug?: string
         }
         Update: {
           created_at?: string | null
           id?: number
           name?: string
+          slug?: string
         }
         Relationships: []
       }
@@ -114,19 +117,19 @@ export interface Database {
           created_at: string
           dish_id: number
           id: number
-          ingredient_it: number
+          ingredient_id: number
         }
         Insert: {
           created_at?: string
           dish_id: number
           id?: number
-          ingredient_it: number
+          ingredient_id: number
         }
         Update: {
           created_at?: string
           dish_id?: number
           id?: number
-          ingredient_it?: number
+          ingredient_id?: number
         }
         Relationships: [
           {
@@ -137,8 +140,8 @@ export interface Database {
             referencedColumns: ['id']
           },
           {
-            foreignKeyName: 'dish_ingredients_ingredient_it_fkey'
-            columns: ['ingredient_it']
+            foreignKeyName: 'dish_ingredients_ingredient_id_fkey'
+            columns: ['ingredient_id']
             isOneToOne: false
             referencedRelation: 'ingredients'
             referencedColumns: ['id']
