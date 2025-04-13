@@ -12,7 +12,7 @@ export async function getCategories(): Promise<Categories[]> {
 
   return categories
 }
-// : Promise<Dish[]>
+
 export async function getCategoryDishes(categoryName: string): Promise<Dish[] | []> {
   const { data: categories, error } = await supabase
     .from('categories')
