@@ -10,7 +10,7 @@ async function Page() {
   const categories = await getCategories()
 
   return (
-    <div className="w-full flex flex-col items-center">
+    <>
       <Box className="w-full max-w-2xl rounded-xl shadow-lg p-2 border border-border dark:border-dark-border bg-background dark:bg-dark-background text-text-primary dark:text-text-dark-primary transition-all duration-300 ease-in-out px-5 py-2 text-center">
         <List className="w-full rounded-md text-center flex items-center justify-center flex-col gap-5">
           {categories.map(category => (
@@ -29,7 +29,7 @@ async function Page() {
           ))}
         </List>
       </Box>
-    </div>
+    </>
   )
 }
 

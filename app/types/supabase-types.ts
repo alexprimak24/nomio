@@ -36,60 +36,60 @@ export interface Database {
     Tables: {
       categories: {
         Row: {
-          created_at: string
+          created_at: string | null
           id: number
-          name: string | null
+          name: string
         }
         Insert: {
-          created_at?: string
+          created_at?: string | null
           id?: number
-          name?: string | null
+          name: string
         }
         Update: {
-          created_at?: string
+          created_at?: string | null
           id?: number
-          name?: string | null
+          name?: string
         }
         Relationships: []
       }
       customers: {
         Row: {
           created_at: string
-          full_name: string | null
+          full_name: string
           id: number
-          phone_number: string | null
+          phone_number: string
         }
         Insert: {
           created_at?: string
-          full_name?: string | null
+          full_name: string
           id?: number
-          phone_number?: string | null
+          phone_number: string
         }
         Update: {
           created_at?: string
-          full_name?: string | null
+          full_name?: string
           id?: number
-          phone_number?: string | null
+          phone_number?: string
         }
         Relationships: []
       }
       dish_categories: {
         Row: {
-          category: number | null
+          category: number
           created_at: string
-          dish_id: number | null
+          dish_id: number
           id: number
         }
         Insert: {
-          category?: number | null
+          category: number
           created_at?: string
-          dish_id?: number | null
+          dish_id: number
           id?: number
         }
         Update: {
-          category?: number | null
+          category?: number
           created_at?: string
-          dish_id?: number | null
+          dish_id?: number
           id?: number
         }
         Relationships: [
@@ -112,21 +112,21 @@ export interface Database {
       dish_ingredients: {
         Row: {
           created_at: string
-          dish_id: number | null
+          dish_id: number
           id: number
-          ingredient_it: number | null
+          ingredient_it: number
         }
         Insert: {
           created_at?: string
-          dish_id?: number | null
+          dish_id: number
           id?: number
-          ingredient_it?: number | null
+          ingredient_it: number
         }
         Update: {
           created_at?: string
-          dish_id?: number | null
+          dish_id?: number
           id?: number
-          ingredient_it?: number | null
+          ingredient_it?: number
         }
         Relationships: [
           {
@@ -148,24 +148,24 @@ export interface Database {
       dishes: {
         Row: {
           created_at: string
-          description: string | null
+          description: string
           id: number
           name: string
-          price: number | null
+          price: number
         }
         Insert: {
           created_at?: string
-          description?: string | null
+          description: string
           id?: number
           name: string
-          price?: number | null
+          price: number
         }
         Update: {
           created_at?: string
-          description?: string | null
+          description?: string
           id?: number
           name?: string
-          price?: number | null
+          price?: number
         }
         Relationships: []
       }
@@ -173,44 +173,44 @@ export interface Database {
         Row: {
           created_at: string
           id: number
-          image: string | null
-          ingredient: string | null
+          image: string
+          ingredient: string
         }
         Insert: {
           created_at?: string
           id?: number
-          image?: string | null
-          ingredient?: string | null
+          image: string
+          ingredient: string
         }
         Update: {
           created_at?: string
           id?: number
-          image?: string | null
-          ingredient?: string | null
+          image?: string
+          ingredient?: string
         }
         Relationships: []
       }
       order_items: {
         Row: {
           created_at: string
-          dish_id: number | null
+          dish_id: number
           id: number
-          order_id: number | null
-          quantity: number | null
+          order_id: number
+          quantity: number
         }
         Insert: {
           created_at?: string
-          dish_id?: number | null
+          dish_id: number
           id?: number
-          order_id?: number | null
-          quantity?: number | null
+          order_id: number
+          quantity: number
         }
         Update: {
           created_at?: string
-          dish_id?: number | null
+          dish_id?: number
           id?: number
-          order_id?: number | null
-          quantity?: number | null
+          order_id?: number
+          quantity?: number
         }
         Relationships: [
           {
@@ -232,36 +232,36 @@ export interface Database {
       orders: {
         Row: {
           created_at: string
-          delivery_date: string | null
+          delivery_date: string
           id: number
-          is_paid: boolean | null
+          is_paid: boolean
           observations: string | null
-          payment_method: string | null
-          public_id: string | null
-          status: string | null
-          user_id: number | null
+          payment_method: string
+          public_id: string
+          status: string
+          user_id: number
         }
         Insert: {
           created_at?: string
-          delivery_date?: string | null
+          delivery_date: string
           id?: number
-          is_paid?: boolean | null
+          is_paid?: boolean
           observations?: string | null
-          payment_method?: string | null
-          public_id?: string | null
-          status?: string | null
-          user_id?: number | null
+          payment_method: string
+          public_id: string
+          status: string
+          user_id: number
         }
         Update: {
           created_at?: string
-          delivery_date?: string | null
+          delivery_date?: string
           id?: number
-          is_paid?: boolean | null
+          is_paid?: boolean
           observations?: string | null
-          payment_method?: string | null
-          public_id?: string | null
-          status?: string | null
-          user_id?: number | null
+          payment_method?: string
+          public_id?: string
+          status?: string
+          user_id?: number
         }
         Relationships: [
           {
@@ -275,31 +275,31 @@ export interface Database {
       }
       settings: {
         Row: {
-          amount_for_discount: number | null
+          amount_for_discount: number
           created_at: string
-          delivery_price: number | null
-          discount: number | null
-          free_delivery_amount: number | null
+          delivery_price: number
+          discount: number
+          free_delivery_amount: number
           id: number
-          min_order_amount: number | null
+          min_order_amount: number
         }
         Insert: {
-          amount_for_discount?: number | null
+          amount_for_discount: number
           created_at?: string
-          delivery_price?: number | null
-          discount?: number | null
-          free_delivery_amount?: number | null
+          delivery_price: number
+          discount: number
+          free_delivery_amount: number
           id?: number
-          min_order_amount?: number | null
+          min_order_amount: number
         }
         Update: {
-          amount_for_discount?: number | null
+          amount_for_discount?: number
           created_at?: string
-          delivery_price?: number | null
-          discount?: number | null
-          free_delivery_amount?: number | null
+          delivery_price?: number
+          discount?: number
+          free_delivery_amount?: number
           id?: number
-          min_order_amount?: number | null
+          min_order_amount?: number
         }
         Relationships: []
       }

@@ -25,7 +25,7 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <Header />
           <div className="grid flex-1 px-8 py-12">
-            <main className="w-full flex flex-col items-center pt-10 max-w-7xl">
+            <main className="w-full flex flex-col items-center max-w-7xl">
               <ThemeProvider theme={theme}>
                 {children}
               </ThemeProvider>
