@@ -1,6 +1,5 @@
-import { getCategoryDishes, getDish } from '@/app/_lib/db/queries'
+import { getDish } from '@/app/_lib/db/queries'
 import { Avatar, Box, Divider, List, ListItem, Typography } from '@mui/material'
-import Link from 'next/link'
 import React from 'react'
 
 interface PageProps {
@@ -18,21 +17,6 @@ async function Page({ params }: PageProps) {
   const { dish } = await params
   const {description,name, price, dish_ingredients} = await getDish(dish) 
 
-  const ingredients = ...dish_ingredients;
-
-  // created_at: string;
-  // description: string;
-  // id: number;
-  // name: string;
-  // price: number;
-  // dish_ingredients: {
-  //     ingredient_id: number;
-  //     ingredients: {
-  //         ingredient: string;
-  //         image: string;
-  //     };
-  // }[];
-
   return (
     <Box
       sx={{
@@ -44,7 +28,6 @@ async function Page({ params }: PageProps) {
         p: 3,
       }}
     >
-      {/* Dish Image */}
       <Box
         component="img"
         // src={image}
@@ -58,7 +41,6 @@ async function Page({ params }: PageProps) {
         }}
       />
 
-      {/* Dish Info */}
       <Typography variant="h5" fontWeight="bold" gutterBottom>
         {name}
       </Typography>
@@ -72,7 +54,6 @@ async function Page({ params }: PageProps) {
 
       <Divider sx={{ my: 2 }} />
 
-      {/* Ingredients */}
       <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
         Ingredients
       </Typography>

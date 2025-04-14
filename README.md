@@ -9,7 +9,7 @@ Nomio - is the yummiest food that can be delivered!
 - [X] Displayed categories
 - [X] Displayed dishes for a specific category
 - [x] Add fallbacks for loading, not found, error page
-- [ ] Displayed specific dish
+- [ ] Displayed specific dish 
 - [ ] Make everything look pretty
 - [ ] Implement auth
 - [ ] Create global state for the cart and add ability to add items to the card
