@@ -24,8 +24,8 @@ export default function RootLayout({
       <body className="bg-background dark:bg-dark-background text-text-primary dark:text-text-dark-primary flex flex-col min-h-svh relative">
         <AppRouterCacheProvider>
           <Header />
-          <div className="grid flex-1 px-8 py-12">
-            <main className="w-full flex flex-col items-center max-w-7xl">
+          <div className="grid flex-1 px-8 py-12 justify-center">
+            <main className="w-full flex flex-col items-center max-w-7xl mx-auto">
               <ThemeProvider theme={theme}>
                 {children}
               </ThemeProvider>
