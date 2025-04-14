@@ -22,7 +22,12 @@ async function Page({ params }: PageProps) {
   const categoryDishes = await getCategoryDishes(categoryTitle)
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className={`${
+      categoryDishes.length >= 3
+        ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'
+        : 'flex justify-center gap-4 flex-wrap'
+    }`}
+    >
       {categoryDishes.map(dish => (
         <Box
           key={dish.id}
@@ -53,7 +58,20 @@ async function Page({ params }: PageProps) {
             <Typography variant="h5" fontWeight="bold" gutterBottom>
               {dish.name}
             </Typography>
-            <Typography variant="body2" gutterBottom sx={{ maxWidth: '248px' }}>
+            <Typography
+              variant="body2"
+              gutterBottom
+              sx={{
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                maxWidth: '248px',
+                lineHeight: '1.5rem',
+                minHeight: '3rem',
+              }}
+            >
               {dish.description}
             </Typography>
             <Typography variant="h6" color="primary" gutterBottom>
