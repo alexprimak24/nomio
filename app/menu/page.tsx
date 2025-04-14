@@ -7,6 +7,8 @@ export const metadata = {
   title: 'Menu',
 }
 
+export const revalidate = 3600;
+
 async function Page() {
   const categories = await getCategories()
 

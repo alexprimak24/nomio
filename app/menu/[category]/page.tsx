@@ -13,9 +13,11 @@ export async function generateMetadata({ params }: PageProps) {
   return { title: `${category[0].toUpperCase() + category.slice(1)}` }
 }
 
+export const revalidate = 3600;
+
 async function Page({ params }: PageProps) {
   const { category: categoryTitle } = await params
-  console.log(categoryTitle)
+  // console.log(categoryTitle)
   const categoryDishes = await getCategoryDishes(categoryTitle)
 
   return (
