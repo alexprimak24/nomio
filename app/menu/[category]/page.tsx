@@ -24,18 +24,19 @@ async function Page({ params }: PageProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {categoryDishes.map(dish => (
-        <Link key={dish.id} href={`/menu/${categoryTitle}/${slugify(dish.name)}`}>
-          <Box
-            sx={{
-              border: '1px solid #fff',
-              maxWidth: 400,
-              borderRadius: 4,
-              overflow: 'hidden',
-              boxShadow: 3,
-              m: 'auto',
-              p: 3,
-            }}
-          >
+        <Box
+          key={dish.id}
+          sx={{
+            border: '1px solid #fff',
+            maxWidth: 400,
+            borderRadius: 4,
+            overflow: 'hidden',
+            boxShadow: 3,
+            m: 'auto',
+            p: 3,
+          }}
+        >
+          <Link href={`/menu/${categoryTitle}/${slugify(dish.name)}`}>
             <Box
               component="img"
               src={dish.image}
@@ -59,68 +60,14 @@ async function Page({ params }: PageProps) {
               $
               {dish.price.toFixed(2)}
             </Typography>
-
             <Divider sx={{ my: 2 }} />
-            <AddToCart dishId={dish.id} />
-          </Box>
-        </Link>
+          </Link>
+          <AddToCart dishId={dish.id} />
+        </Box>
       ))}
 
     </div>
   )
 }
-
-//   <Box
-//     sx={{
-//       maxWidth: 400,
-//       borderRadius: 4,
-//       overflow: 'hidden',
-//       boxShadow: 3,
-//       m: 'auto',
-//       p: 3,
-//     }}
-//   >
-//     <Box
-//       component="img"
-//       src={image}
-//       alt={name}
-//       sx={{
-//         width: '100%',
-//         height: 220,
-//         objectFit: 'cover',
-//         borderRadius: 2,
-//         mb: 2,
-//       }}
-//     />
-
-//   <Typography variant="h5" fontWeight="bold" gutterBottom>
-//     {name}
-//   </Typography>
-//   <Typography variant="body2" color="text.secondary" gutterBottom>
-//     {description}
-//   </Typography>
-//   <Typography variant="h6" color="primary" gutterBottom>
-//     $
-//     {price.toFixed(2)}
-//   </Typography>
-
-//   <Divider sx={{ my: 2 }} />
-
-//   <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
-//     Ingredients
-//   </Typography>
-//   <List>
-//     {dish_ingredients.map(ingredient => (
-//       <ListItem key={ingredient.ingredients.id} sx={{ pl: 0 }}>
-//         <Avatar
-//           src={ingredient.ingredients.image}
-//           alt={ingredient.ingredients.ingredient}
-//           sx={{ width: 32, height: 32, mr: 2 }}
-//         />
-//         <Typography variant="body2">{ingredient.ingredients.ingredient}</Typography>
-//       </ListItem>
-//     ))}
-//   </List>
-// </Box>
 
 export default Page
