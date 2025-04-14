@@ -24,6 +24,6 @@ Nomio - is the yummiest food that can be delivered!
 ...
 
 ## Todo for today
-- [ ] Add to be for dishes table image field
-- [ ] Add real images for ingredients and dishes
+- [X] Add to be for dishes table image field
+- [X] Add real images for ingredients and dishes
 - [ ] Make everything look pretty

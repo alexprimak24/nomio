@@ -15,7 +15,7 @@ export const revalidate = 3600
 
 async function Page({ params }: PageProps) {
   const { dish } = await params
-  const {description,name, price, dish_ingredients} = await getDish(dish) 
+  const {description,name, price, image, dish_ingredients} = await getDish(dish) 
 
   return (
     <Box
@@ -30,7 +30,7 @@ async function Page({ params }: PageProps) {
     >
       <Box
         component="img"
-        // src={image}
+        src={image}
         alt={name}
         sx={{
           width: '100%',

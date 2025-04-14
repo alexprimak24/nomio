@@ -78,19 +78,19 @@ export interface Database {
       }
       dish_categories: {
         Row: {
-          category: number
+          category_id: number
           created_at: string
           dish_id: number
           id: number
         }
         Insert: {
-          category: number
+          category_id: number
           created_at?: string
           dish_id: number
           id?: number
         }
         Update: {
-          category?: number
+          category_id?: number
           created_at?: string
           dish_id?: number
           id?: number
@@ -104,8 +104,8 @@ export interface Database {
             referencedColumns: ['id']
           },
           {
-            foreignKeyName: 'dish_categories_category_fkey'
-            columns: ['category']
+            foreignKeyName: 'dish_categories_category_id_fkey'
+            columns: ['category_id']
             isOneToOne: false
             referencedRelation: 'categories'
             referencedColumns: ['id']
@@ -153,22 +153,28 @@ export interface Database {
           created_at: string
           description: string
           id: number
+          image: string
           name: string
           price: number
+          slug: string
         }
         Insert: {
           created_at?: string
           description: string
           id?: number
+          image?: string
           name: string
           price: number
+          slug?: string
         }
         Update: {
           created_at?: string
           description?: string
           id?: number
+          image?: string
           name?: string
           price?: number
+          slug?: string
         }
         Relationships: []
       }
