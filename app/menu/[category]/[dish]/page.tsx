@@ -1,5 +1,5 @@
-import { getCategoryDishes } from '@/app/_lib/db/queries'
-import { Box, List, ListItem } from '@mui/material'
+import { getCategoryDishes, getDish } from '@/app/_lib/db/queries'
+import { Avatar, Box, Divider, List, ListItem, Typography } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
 
@@ -12,40 +12,83 @@ export async function generateMetadata({ params }: PageProps) {
   return { title: `${dish[0].toUpperCase() + dish.slice(1)}` }
 }
 
-export const revalidate = 3600;
+export const revalidate = 3600
 
 async function Page({ params }: PageProps) {
-  // const { dish } = await params
-  // const categoryDishes = await getCategoryDishes(dish)
+  const { dish } = await params
+  const {description,name, price, dish_ingredients} = await getDish(dish) 
 
-  return (<>s</>
-    // <Box className="w-full max-w-2xl rounded-xl shadow-lg p-2 border border-border dark:border-dark-border bg-background dark:bg-dark-background text-text-primary dark:text-text-dark-primary transition-all duration-300 ease-in-out px-5 py-2 text-center">
-    //   <List className="w-full rounded-md text-center flex items-center justify-center flex-col gap-5">
-    //     {categoryDishes.map(category => (
-    //       <Link
-    //         // CHANGE IT
-    //         href="/menu"
-    //         key={category.id}
-    //         className={`text-center w-full
-    //           border border-border dark:border-dark-border min-h-16
-    //            px-16 py-4 my-2 
-    //           cursor-pointer transition-all duration-200 ease-in-out rounded-lg
-    //           hover:bg-accent-indigo hover:text-white hover:scale-[1.02] hover:shadow-md
-    //         `}
-    //       >
-    //         <ListItem sx={{ justifyContent: 'center' }}>
-    //           {category.name}
-    //           {' '}
-    //           with price
-    //           {category.price}
-    //           Description:
-    //           {' '}
-    //           {category.description}
-    //         </ListItem>
-    //       </Link>
-    //     ))}
-    //   </List>
-    // </Box>
+  const ingredients = ...dish_ingredients;
+
+  // created_at: string;
+  // description: string;
+  // id: number;
+  // name: string;
+  // price: number;
+  // dish_ingredients: {
+  //     ingredient_id: number;
+  //     ingredients: {
+  //         ingredient: string;
+  //         image: string;
+  //     };
+  // }[];
+
+  return (
+    <Box
+      sx={{
+        maxWidth: 400,
+        borderRadius: 4,
+        overflow: 'hidden',
+        boxShadow: 3,
+        m: 'auto',
+        p: 3,
+      }}
+    >
+      {/* Dish Image */}
+      <Box
+        component="img"
+        // src={image}
+        alt={name}
+        sx={{
+          width: '100%',
+          height: 220,
+          objectFit: 'cover',
+          borderRadius: 2,
+          mb: 2,
+        }}
+      />
+
+      {/* Dish Info */}
+      <Typography variant="h5" fontWeight="bold" gutterBottom>
+        {name}
+      </Typography>
+      <Typography variant="body2" color="text.secondary" gutterBottom>
+        {description}
+      </Typography>
+      <Typography variant="h6" color="primary" gutterBottom>
+        $
+        {price.toFixed(2)}
+      </Typography>
+
+      <Divider sx={{ my: 2 }} />
+
+      {/* Ingredients */}
+      <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+        Ingredients
+      </Typography>
+      <List>
+        {dish_ingredients.map(ingredient => (
+          <ListItem key={ingredient.ingredients.id} sx={{ pl: 0 }}>
+            <Avatar
+              src={ingredient.ingredients.image}
+              alt={ingredient.ingredients.ingredient}
+              sx={{ width: 32, height: 32, mr: 2 }}
+            />
+            <Typography variant="body2">{ingredient.ingredients.ingredient}</Typography>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   )
 }
 

@@ -49,12 +49,12 @@ export async function getCategories(): Promise<Categories[]> {
 
 export async function getCategoryDishes(categorySlug: string): Promise<Dish[]> {
   const { data, error } = await supabase
-  .from('dish_categories')
-  .select(`
+    .from('dish_categories')
+    .select(`
     dishes(*),
     categories!inner(slug)
   `)
-  .eq('categories.slug', categorySlug)
+    .eq('categories.slug', categorySlug)
 
   if (error) {
     console.error(error)
@@ -62,4 +62,28 @@ export async function getCategoryDishes(categorySlug: string): Promise<Dish[]> {
   }
 
   return data.map(row => row.dishes)
+}
+
+export async function getDish(dishSlug: string) {
+  const { data, error } = await supabase
+    .from('dishes')
+    .select(`
+    *,
+    dish_ingredients (
+      ingredients (
+        id,
+        ingredient,
+        image
+      )
+    )
+  `)
+    .eq('slug', dishSlug)
+    .single()
+
+  if (error) {
+    console.error(error)
+    throw new Error('There is an error with loading dish')
+  }
+
+  return data
 }
