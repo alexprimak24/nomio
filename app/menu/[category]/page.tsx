@@ -1,6 +1,7 @@
+import AddToCart from '@/app/_components/AddToCart'
 import { getCategoryDishes } from '@/app/_lib/db/queries'
 import { slugify } from '@/app/_utils/slugify'
-import { Box, List, ListItem } from '@mui/material'
+import { Box, Button, Divider, List, ListItem, Typography } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
 
@@ -21,34 +22,105 @@ async function Page({ params }: PageProps) {
   const categoryDishes = await getCategoryDishes(categoryTitle)
 
   return (
-    <Box className="w-full max-w-2xl rounded-xl shadow-lg p-2 border border-border dark:border-dark-border bg-background dark:bg-dark-background text-text-primary dark:text-text-dark-primary transition-all duration-300 ease-in-out px-5 py-2 text-center">
-      <List className="w-full rounded-md text-center flex items-center justify-center flex-col gap-5">
-        {categoryDishes.map(category => (
-          <Link
-            href={`/menu/${categoryTitle}/${slugify(category.name)}`}
-            key={category.id}
-            className={`text-center w-full
-              border border-border dark:border-dark-border min-h-16
-               px-16 py-4 my-2 
-              cursor-pointer transition-all duration-200 ease-in-out rounded-lg
-              hover:bg-accent-indigo hover:text-white hover:scale-[1.02] hover:shadow-md
-            `}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {categoryDishes.map(dish => (
+        <Link key={dish.id} href={`/menu/${categoryTitle}/${slugify(dish.name)}`}>
+          <Box
+            sx={{
+              border: '1px solid #fff',
+              maxWidth: 400,
+              borderRadius: 4,
+              overflow: 'hidden',
+              boxShadow: 3,
+              m: 'auto',
+              p: 3,
+            }}
           >
-            <ListItem sx={{ justifyContent: 'center' }}>
-              <img src={category.image} alt="" />
-              {category.name}
-              {' '}
-              with price
-              {category.price}
-              Description:
-              {' '}
-              {category.description}
-            </ListItem>
-          </Link>
-        ))}
-      </List>
-    </Box>
+            <Box
+              component="img"
+              src={dish.image}
+              alt={dish.name}
+              sx={{
+                width: '100%',
+                height: 220,
+                objectFit: 'cover',
+                borderRadius: 2,
+                mb: 2,
+              }}
+            />
+
+            <Typography variant="h5" fontWeight="bold" gutterBottom>
+              {dish.name}
+            </Typography>
+            <Typography variant="body2" gutterBottom sx={{ maxWidth: '248px' }}>
+              {dish.description}
+            </Typography>
+            <Typography variant="h6" color="primary" gutterBottom>
+              $
+              {dish.price.toFixed(2)}
+            </Typography>
+
+            <Divider sx={{ my: 2 }} />
+            <AddToCart dishId={dish.id} />
+          </Box>
+        </Link>
+      ))}
+
+    </div>
   )
 }
+
+//   <Box
+//     sx={{
+//       maxWidth: 400,
+//       borderRadius: 4,
+//       overflow: 'hidden',
+//       boxShadow: 3,
+//       m: 'auto',
+//       p: 3,
+//     }}
+//   >
+//     <Box
+//       component="img"
+//       src={image}
+//       alt={name}
+//       sx={{
+//         width: '100%',
+//         height: 220,
+//         objectFit: 'cover',
+//         borderRadius: 2,
+//         mb: 2,
+//       }}
+//     />
+
+//   <Typography variant="h5" fontWeight="bold" gutterBottom>
+//     {name}
+//   </Typography>
+//   <Typography variant="body2" color="text.secondary" gutterBottom>
+//     {description}
+//   </Typography>
+//   <Typography variant="h6" color="primary" gutterBottom>
+//     $
+//     {price.toFixed(2)}
+//   </Typography>
+
+//   <Divider sx={{ my: 2 }} />
+
+//   <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+//     Ingredients
+//   </Typography>
+//   <List>
+//     {dish_ingredients.map(ingredient => (
+//       <ListItem key={ingredient.ingredients.id} sx={{ pl: 0 }}>
+//         <Avatar
+//           src={ingredient.ingredients.image}
+//           alt={ingredient.ingredients.ingredient}
+//           sx={{ width: 32, height: 32, mr: 2 }}
+//         />
+//         <Typography variant="body2">{ingredient.ingredients.ingredient}</Typography>
+//       </ListItem>
+//     ))}
+//   </List>
+// </Box>
 
 export default Page
