@@ -22,10 +22,10 @@ async function Page({ params }: PageProps) {
   const categoryDishes = await getCategoryDishes(categoryTitle)
 
   return (
-    <div className={`${
+    <div className={`px-4 py-6 ${
       categoryDishes.length >= 3
         ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'
-        : 'flex justify-center gap-4 flex-wrap'
+        : 'flex justify-center gap-4 flex-wrap flex-col md:flex-row'
     }`}
     >
       {categoryDishes.map(dish => (

@@ -11,7 +11,7 @@ interface AddToCartProps {
 
 export default function AddToCart({ dishId }: AddToCartProps) {
   const [added, setAdded] = useState(false)
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(0)
 
   const increment = () => {
     setQuantity(quantity => quantity + 1)
@@ -38,7 +38,7 @@ export default function AddToCart({ dishId }: AddToCartProps) {
     <Box>
       {!added
         ? (
-            <Button variant="contained" className="w-full h-[45px] rounded-2xl" onClick={handleAdd}>
+            <Button sx={{bgcolor:"#00ff00"}} variant="contained" className="w-full h-[45px] rounded-2xl" onClick={handleAdd}>
               Add to cart
             </Button>
           )
@@ -52,11 +52,11 @@ export default function AddToCart({ dishId }: AddToCartProps) {
             //   size="small"
             //   inputProps={{ min: 1 }}
             // />
-            <div className="flex gap-3 items-center">
+            <div className="flex justify-between gap-3 items-center">
               <Button variant="outlined" className="w-full" onClick={decrement}>
                 -
               </Button>
-              <p>{quantity}</p>
+              <p className='mx-1 font-bold'>{quantity}</p>
               <Button variant="outlined" className="w-full" onClick={increment}>
                 +
               </Button>

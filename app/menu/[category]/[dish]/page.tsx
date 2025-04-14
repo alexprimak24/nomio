@@ -20,7 +20,7 @@ async function Page({ params }: PageProps) {
   const { id, description, name, price, image, dish_ingredients } = await getDish(dish)
 
   return (
-    <Container maxWidth="lg" sx={{ py: 6 }}>
+    <Container maxWidth="lg">
       <Grid container spacing={4}>
         <Grid size={{ xs: 12, md: 6 }}>
           {/* CHANGE TO NORMAL IMAGE */}
@@ -38,7 +38,7 @@ async function Page({ params }: PageProps) {
           />
         </Grid>
 
-        <Grid size={{ xs: 12, md: 6 }} className="min-h-full flex flex-col justify-between gap-4">
+        <Grid size={{ xs: 12, md: 6 }} className="min-h-full flex flex-col justify-between gap-8">
           <div>
             <Typography variant="h3" fontWeight="bold" gutterBottom>
               {name}
@@ -51,9 +51,7 @@ async function Page({ params }: PageProps) {
               {price.toFixed(2)}
             </Typography>
           </div>
-          <div className="w-3/4">
           <AddToCart dishId={id} />
-          </div>
         </Grid>
       </Grid>
 
@@ -85,7 +83,7 @@ async function Page({ params }: PageProps) {
                 boxShadow: 2,
               }}
             />
-            <Typography variant="body2" align="center">
+            <Typography variant="body2" align="center" sx={{minWidth: "110px"}}>
               {ingredient.ingredients.ingredient}
             </Typography>
           </ListItem>
