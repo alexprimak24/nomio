@@ -1,4 +1,5 @@
 import type { Categories, Dish } from '@/app/types/db'
+import { cache } from 'react'
 import { supabase } from '../supabase'
 
 export async function getCategories(): Promise<Categories[]> {
@@ -47,7 +48,7 @@ export async function getCategories(): Promise<Categories[]> {
 //   return dishesArr
 // }
 
-export async function getCategoryDishes(categorySlug: string): Promise<Dish[]> {
+export const getCategoryDishes = cache(async (categorySlug: string): Promise<Dish[]> => {
   const { data, error } = await supabase
     .from('dish_categories')
     .select(`
@@ -62,7 +63,7 @@ export async function getCategoryDishes(categorySlug: string): Promise<Dish[]> {
   }
 
   return data.map(row => row.dishes)
-}
+})
 
 export async function getDish(dishSlug: string) {
   const { data, error } = await supabase

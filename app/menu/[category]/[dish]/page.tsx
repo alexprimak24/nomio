@@ -14,7 +14,6 @@ export async function generateMetadata({ params }: PageProps) {
   return { title: `${dish[0].toUpperCase() + dish.slice(1)}` }
 }
 
-export const revalidate = 3600
 
 async function Page({ params }: PageProps) {
   const { dish } = await params

@@ -1,7 +1,8 @@
 import AddToCart from '@/app/_components/AddToCartBtn'
 import { getCategoryDishes } from '@/app/_lib/db/queries'
+import { supabase } from '@/app/_lib/supabase'
 import { slugify } from '@/app/_utils/slugify'
-import { Box, Button, Divider, List, ListItem, Typography } from '@mui/material'
+import { Box, Divider, Typography } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -13,6 +14,11 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps) {
   const { category } = await params
   return { title: `${category[0].toUpperCase() + category.slice(1)}` }
+}
+
+export async function generateStaticParams() {
+  const { data } = await supabase.from('categories').select('slug')
+  return data?.map(cat => ({ category: cat.slug }))
 }
 
 export const revalidate = 3600
