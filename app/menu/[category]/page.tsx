@@ -53,19 +53,7 @@ async function Page({ params }: PageProps) {
                 className="object-cover"
               />
             </Box>
-            {/* <Box
-              component="img"
-              src={dish.image}
-              alt={dish.name}
-              sx={{
-                width: '100%',
-                height: 220,
-                objectFit: 'cover',
-                borderRadius: 2,
-                mb: 2,
-              }}
-            /> */}
-
+            
             <Typography variant="h5" fontWeight="bold" gutterBottom>
               {dish.name}
             </Typography>

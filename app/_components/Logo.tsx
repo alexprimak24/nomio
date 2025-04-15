@@ -5,7 +5,7 @@ import React from 'react'
 
 function Logo() {
   return (
-    <Link href="/" className="z-10 flex items-center gap-4">
+    <Link href="/menu" className="z-10 flex items-center gap-4">
       <Image
         src={logo}
         alt="Nomio Logo"
