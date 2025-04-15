@@ -22,7 +22,7 @@ async function Page({ params }: PageProps) {
 
   return (
     <Container maxWidth="lg" className="flex flex-col justify-between items-center gap-8 text-center amd:items-start amd:text-left">
-      <Grid container spacing={4}>
+      <Grid container spacing={5}>
         <Grid size={{ xs: 12, md: 6 }}>
           <Box
             className="w-[320px] sm:w-[382px] aspect-square relative rounded-md overflow-hidden shadow-md mx-auto amd:mx-0"

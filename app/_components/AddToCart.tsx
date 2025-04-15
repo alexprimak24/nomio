@@ -38,7 +38,7 @@ export default function AddToCart({ dishId }: AddToCartProps) {
     <Box className="max-w-[382px]">
       {!added
         ? (
-            <Button sx={{bgcolor:"#00ff00"}} variant="contained" className="w-full h-[45px] rounded-2xl" onClick={handleAdd}>
+            <Button sx={{ bgcolor: '#FA4A0C', color: '#FFF' }} variant="contained" className="w-full h-[45px] rounded-2xl" onClick={handleAdd}>
               Add to cart
             </Button>
           )
@@ -53,11 +53,11 @@ export default function AddToCart({ dishId }: AddToCartProps) {
             //   inputProps={{ min: 1 }}
             // />
             <div className="flex justify-between gap-3 items-center">
-              <Button variant="outlined" className="w-full" onClick={decrement}>
+              <Button sx={{ borderColor: '#FA4A0C', color: '#FFF' }} variant="outlined" className="w-full" onClick={decrement}>
                 -
               </Button>
-              <p className='mx-1 font-bold'>{quantity}</p>
-              <Button variant="outlined" className="w-full" onClick={increment}>
+              <p className="mx-1 font-bold">{quantity}</p>
+              <Button sx={{ borderColor: '#FA4A0C', color: '#FFF' }} variant="outlined" className="w-full" onClick={increment}>
                 +
               </Button>
             </div>
