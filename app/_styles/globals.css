@@ -23,5 +23,7 @@
 
   --color-border:#d4dee7;
   --color-dark-border: #AAAAAA;
+
+  --breakpoint-amd: 900px;
   }
 

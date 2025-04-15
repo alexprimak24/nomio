@@ -2,6 +2,7 @@ import AddToCart from '@/app/_components/AddToCart'
 import { getCategoryDishes } from '@/app/_lib/db/queries'
 import { slugify } from '@/app/_utils/slugify'
 import { Box, Button, Divider, List, ListItem, Typography } from '@mui/material'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -43,6 +44,16 @@ async function Page({ params }: PageProps) {
         >
           <Link href={`/menu/${categoryTitle}/${slugify(dish.name)}`}>
             <Box
+               className="w-220px aspect-square relative rounded-md mb-2"
+            >
+              <Image
+                src={dish.image}
+                alt={`Dish: ${dish.name}`}
+                fill
+                className="object-cover"
+              />
+            </Box>
+            {/* <Box
               component="img"
               src={dish.image}
               alt={dish.name}
@@ -53,7 +64,7 @@ async function Page({ params }: PageProps) {
                 borderRadius: 2,
                 mb: 2,
               }}
-            />
+            /> */}
 
             <Typography variant="h5" fontWeight="bold" gutterBottom>
               {dish.name}

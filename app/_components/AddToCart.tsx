@@ -35,7 +35,7 @@ export default function AddToCart({ dishId }: AddToCartProps) {
   }
 
   return (
-    <Box>
+    <Box className="max-w-[382px]">
       {!added
         ? (
             <Button sx={{bgcolor:"#00ff00"}} variant="contained" className="w-full h-[45px] rounded-2xl" onClick={handleAdd}>

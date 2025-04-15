@@ -9,7 +9,24 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ikawflqgezkczhpybcsv.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/dishes/**',
+        search: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ikawflqgezkczhpybcsv.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/ingedients/**',
+        search: '',
+      },
+    ],
+  },
 }
 
 export default nextConfig

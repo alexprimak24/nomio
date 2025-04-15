@@ -2,6 +2,7 @@ import AddToCart from '@/app/_components/AddToCart'
 import { getDish } from '@/app/_lib/db/queries'
 import { Avatar, Box, Container, Divider, List, ListItem, Typography } from '@mui/material'
 import Grid from '@mui/material/Grid'
+import Image from 'next/image'
 import React from 'react'
 
 interface PageProps {
@@ -20,48 +21,49 @@ async function Page({ params }: PageProps) {
   const { id, description, name, price, image, dish_ingredients } = await getDish(dish)
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" className="flex flex-col justify-between items-center gap-8 text-center amd:items-start amd:text-left">
       <Grid container spacing={4}>
         <Grid size={{ xs: 12, md: 6 }}>
-          {/* CHANGE TO NORMAL IMAGE */}
           <Box
-            component="img"
-            src={image}
-            alt={name}
-            sx={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              borderRadius: 4,
-              boxShadow: 4,
-            }}
-          />
+            className="w-[320px] sm:w-[382px] aspect-square relative rounded-md overflow-hidden shadow-md mx-auto amd:mx-0"
+          >
+            <Image
+              src={image}
+              alt={`Dish: ${name}`}
+              fill
+              className="object-cover"
+            />
+          </Box>
         </Grid>
 
-        <Grid size={{ xs: 12, md: 6 }} className="min-h-full flex flex-col justify-between gap-8">
+        <Grid
+          size={{ xs: 12, md: 6 }}
+          className="flex flex-col justify-between max-h-[382px] gap-16"
+        >
           <div>
             <Typography variant="h3" fontWeight="bold" gutterBottom>
               {name}
             </Typography>
-            <Typography variant="body1">
-              {description}
-            </Typography>
+            <Typography variant="body1">{description}</Typography>
             <Typography variant="h5" color="primary" sx={{ mt: 2 }}>
               $
               {price.toFixed(2)}
             </Typography>
           </div>
-          <AddToCart dishId={id} />
+
+          <div className="mx-auto amd:mx-0 w-[220px] amd:w-auto">
+            <AddToCart dishId={id} />
+          </div>
         </Grid>
       </Grid>
 
-      <Divider sx={{ my: 2 }} />
+      <Divider sx={{ my: 2 }} className="hidden amd:block" />
 
       <Typography variant="h4" fontWeight="bold" gutterBottom>
         Ingredients
       </Typography>
 
-      <List sx={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
+      <List sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, justifyContent:"center" }}>
         {dish_ingredients.map(ingredient => (
           <ListItem
             key={ingredient.ingredients.id}
@@ -83,7 +85,7 @@ async function Page({ params }: PageProps) {
                 boxShadow: 2,
               }}
             />
-            <Typography variant="body2" align="center" sx={{minWidth: "110px"}}>
+            <Typography variant="body2" align="center" sx={{ minWidth: '110px' }}>
               {ingredient.ingredients.ingredient}
             </Typography>
           </ListItem>
