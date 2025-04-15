@@ -24,7 +24,7 @@ async function Page({ params }: PageProps) {
       <Grid container spacing={8}>
         <Grid size={{ xs: 12, md: 6 }}>
           <Box
-            className="size-[320px] sm:size-[382px] aspect-square relative rounded-md overflow-hidden shadow-md mx-auto amd:mx-0"
+            className="size-[320px] sm:size-[382px] aspect-square relative rounded-md overflow-hidden shadow-md mx-auto amd:mx-0 border border-red-500"
           >
             <Image
               src={image}
@@ -37,7 +37,7 @@ async function Page({ params }: PageProps) {
 
         <Grid
           size={{ xs: 12, md: 6 }}
-          className="flex flex-col justify-between max-h-[382px] gap-16"
+          className="flex flex-col justify-between gap-6 amd:gap-16"
         >
           <div>
             <Typography variant="h3" fontWeight="bold" gutterBottom>

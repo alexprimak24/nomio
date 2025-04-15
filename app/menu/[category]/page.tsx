@@ -50,7 +50,7 @@ async function Page({ params }: PageProps) {
         >
           <Link href={`/menu/${categoryTitle}/${slugify(dish.name)}`}>
             <Box
-              className="w-220px aspect-square relative rounded-md mb-2"
+              className="w-[248px] aspect-square relative rounded-md mb-2"
             >
               <Image
                 src={dish.image}
