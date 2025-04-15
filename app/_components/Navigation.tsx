@@ -1,4 +1,4 @@
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
+import Cart from '@/app/_components/Cart'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -6,10 +6,7 @@ import React from 'react'
 function Navigation() {
   return (
     <>
-      <Link href="/cart" className="bg-transparent rounded-full flex items-center justify-center w-10 h-10">
-        <ShoppingCartOutlinedIcon />
-        <p className="mb-5 text-accent-violet dark:text-accent-dark-violet font-light">5</p>
-      </Link>
+     <Cart/>
       <div className="cursor-pointer relative w-10 h-10">
         {/* TODO: display login buttion if there is not user */}
         <Link href="/profile">

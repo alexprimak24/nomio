@@ -1,4 +1,4 @@
-import AddToCart from '@/app/_components/AddToCart'
+import AddToCart from '@/app/_components/AddToCartBtn'
 import { getCategoryDishes } from '@/app/_lib/db/queries'
 import { slugify } from '@/app/_utils/slugify'
 import { Box, Button, Divider, List, ListItem, Typography } from '@mui/material'
@@ -53,7 +53,7 @@ async function Page({ params }: PageProps) {
                 className="object-cover"
               />
             </Box>
-            
+
             <Typography variant="h5" fontWeight="bold" gutterBottom>
               {dish.name}
             </Typography>
@@ -79,7 +79,7 @@ async function Page({ params }: PageProps) {
             </Typography>
             <Divider sx={{ my: 2 }} />
           </Link>
-          <AddToCart dishId={dish.id} />
+          <AddToCart dishId={dish.id} image={dish.image} price={dish.price} name={dish.name} />
         </Box>
       ))}
 

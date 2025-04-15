@@ -1,37 +1,43 @@
 'use client'
 
-import { Box, Button, TextField } from '@mui/material'
+import { useCart } from '@/app/_context/CartContext'
+import { Box, Button } from '@mui/material'
 import { useState } from 'react'
 
-interface AddToCartProps {
+export interface AddToCartProps {
   dishId: number
-//   dishName: string
-//   price: number
+  image: string
+  price: number
+  name: string
 }
 
-export default function AddToCart({ dishId }: AddToCartProps) {
+export default function AddToCart({ dishId, image, price, name }: AddToCartProps) {
+  const { cartItems, addToCart, changeDishQuantity, removeFromCart } = useCart()
   const [added, setAdded] = useState(false)
   const [quantity, setQuantity] = useState(0)
 
-  const increment = () => {
+  const incQuantity = () => {
     setQuantity(quantity => quantity + 1)
+    changeDishQuantity(dishId, quantity + 1)
   }
 
-  const decrement = () => {
+  const decQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity => quantity - 1)
+      changeDishQuantity(dishId, quantity - 1)
     }
     else {
       setAdded(false)
       setQuantity(0)
+      removeFromCart(dishId)
     }
   }
+  console.log(cartItems)
 
   const handleAdd = () => {
-    // You can call your cart context, Supabase, or fetch to API route here
-    console.log(`Added ${dishId} to cart`)
     setAdded(true)
-    increment()
+    incQuantity()
+    addToCart({ id: dishId, image, price, name, quantity: 1 })
   }
 
   return (
@@ -43,21 +49,12 @@ export default function AddToCart({ dishId }: AddToCartProps) {
             </Button>
           )
         : (
-            // <TextField
-            //   type="number"
-            //   label="Quantity"
-            //   value={quantity}
-            //   onChange={(e) => {changeAmount(e)}}
-            //   fullWidth
-            //   size="small"
-            //   inputProps={{ min: 1 }}
-            // />
             <div className="flex justify-between gap-3 items-center">
-              <Button sx={{ borderColor: '#FA4A0C', color: '#FFF' }} variant="outlined" className="w-full" onClick={decrement}>
+              <Button sx={{ borderColor: '#FA4A0C', color: '#FFF' }} variant="outlined" className="w-full" onClick={decQuantity}>
                 -
               </Button>
               <p className="mx-1 font-bold">{quantity}</p>
-              <Button sx={{ borderColor: '#FA4A0C', color: '#FFF' }} variant="outlined" className="w-full" onClick={increment}>
+              <Button sx={{ borderColor: '#FA4A0C', color: '#FFF' }} variant="outlined" className="w-full" onClick={incQuantity}>
                 +
               </Button>
             </div>

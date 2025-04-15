@@ -1,4 +1,4 @@
-import AddToCart from '@/app/_components/AddToCart'
+import AddToCart from '@/app/_components/AddToCartBtn'
 import { getDish } from '@/app/_lib/db/queries'
 import { Avatar, Box, Container, Divider, List, ListItem, Typography } from '@mui/material'
 import Grid from '@mui/material/Grid'
@@ -52,7 +52,7 @@ async function Page({ params }: PageProps) {
           </div>
 
           <div className="mx-auto amd:mx-0 w-[220px] amd:w-auto">
-            <AddToCart dishId={id} />
+            <AddToCart dishId={id} name={name} image={image} price={price} />
           </div>
         </Grid>
       </Grid>

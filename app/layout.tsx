@@ -4,8 +4,8 @@ import { sfPro } from '@/app/_styles/fonts/localfont'
 import theme from '@/app/theme'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
 import { ThemeProvider } from '@mui/material/styles'
-import '@/app/_styles/globals.css'
 import { CartProvider } from './_context/CartContext'
+import '@/app/_styles/globals.css'
 
 export const metadata: Metadata = {
   title: {
@@ -22,20 +22,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={sfPro.className}>
-      <body className="bg-background dark:bg-dark-background text-text-primary dark:text-text-dark-primary flex flex-col min-h-svh relative">
+      <CartProvider>
         <AppRouterCacheProvider>
-          <CartProvider>
-          <Header />
-          <div className="grid flex-1 px-8 py-12 justify-center">
-            <main className="w-full flex flex-col items-center max-w-7xl mx-auto">
-              <ThemeProvider theme={theme}>
-                {children}
-              </ThemeProvider>
-            </main>
-          </div>
-          </CartProvider>
+          <body className="bg-background dark:bg-dark-background text-text-primary dark:text-text-dark-primary flex flex-col min-h-svh relative">
+            <Header />
+            <div className="grid flex-1 px-8 py-12 justify-center">
+              <main className="w-full flex flex-col items-center max-w-7xl mx-auto">
+                <ThemeProvider theme={theme}>
+                  {children}
+                </ThemeProvider>
+              </main>
+            </div>
+          </body>
         </AppRouterCacheProvider>
-      </body>
+      </CartProvider>
     </html>
   )
 }

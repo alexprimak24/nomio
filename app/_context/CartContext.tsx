@@ -1,11 +1,12 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { createContext, use, useCallback, useMemo, useState } from 'react'
+import { useLocalStorageState } from '@/app/_hooks/useLocalStorageState'
+import { createContext, use, useCallback, useMemo } from 'react'
 
-interface DishInCartObj {
+export interface DishInCartObj {
   id: number
-  qunantity: number
+  quantity: number
   image: string
   price: number
   name: string
@@ -14,6 +15,7 @@ interface DishInCartObj {
 interface CartContextType {
   cartItems: DishInCartObj[]
   cartItemsQuantity: number
+  totalAmount: number
   addToCart: (dish: DishInCartObj) => void
   changeDishQuantity: (id: number, newQuantity: number) => void
   //   ALWAYS ADD  A POPUP ASKING WHETHER USER REALLY SURE
@@ -26,11 +28,12 @@ const CartContext = createContext<CartContextType | undefined>(
 )
 
 function CartProvider({ children }: { children: ReactNode }) {
-  const [cartItems, setCartItems] = useState<DishInCartObj[]>([])
+  const [cartItems, setCartItems] = useLocalStorageState<DishInCartObj[]>([], 'cartItems')
+  const totalAmount = cartItems.reduce((accumulator, currentValue) => accumulator + currentValue.price * currentValue.quantity, 0)
 
   const addToCart = useCallback((dish: DishInCartObj) => {
     setCartItems(items => [...items, dish])
-  },[])
+  }, [setCartItems])
 
   const changeDishQuantity = useCallback((id: number, newQuantity: number) => {
     const updatedCart = cartItems.map((item) => {
@@ -41,19 +44,19 @@ function CartProvider({ children }: { children: ReactNode }) {
     })
 
     setCartItems(updatedCart)
-  },[cartItems])
+  }, [cartItems, setCartItems])
 
   const clearCart = useCallback(() => {
     setCartItems([])
-  },[])
+  }, [setCartItems])
 
   const removeFromCart = useCallback((id: number) => {
     const updatedCart = cartItems.filter(item => item.id !== id)
 
     setCartItems(updatedCart)
-  },[])
+  }, [cartItems, setCartItems])
 
-  const value = useMemo(() => ({ cartItems, cartItemsQuantity: cartItems?.length, addToCart, changeDishQuantity, clearCart, removeFromCart }), [cartItems, changeDishQuantity, removeFromCart])
+  const value = useMemo(() => ({ cartItems, cartItemsQuantity: cartItems?.length, totalAmount, addToCart, changeDishQuantity, clearCart, removeFromCart }), [addToCart, cartItems, changeDishQuantity, clearCart, removeFromCart, totalAmount])
 
   return (
     <CartContext value={value}>
@@ -61,6 +64,7 @@ function CartProvider({ children }: { children: ReactNode }) {
     </CartContext>
   )
 }
+
 function useCart() {
   const context = use(CartContext)
   if (context === undefined) {
