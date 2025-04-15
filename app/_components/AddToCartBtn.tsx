@@ -2,7 +2,6 @@
 
 import { useCart } from '@/app/_context/CartContext'
 import { Box, Button } from '@mui/material'
-import { useState } from 'react'
 
 export interface AddToCartProps {
   dishId: number
@@ -12,37 +11,31 @@ export interface AddToCartProps {
 }
 
 export default function AddToCart({ dishId, image, price, name }: AddToCartProps) {
-  const { cartItems, addToCart, changeDishQuantity, removeFromCart } = useCart()
-  const [added, setAdded] = useState(false)
-  const [quantity, setQuantity] = useState(0)
+  const { cartItems, addToCart, changeDishQuantity, removeFromCart, checkDishQuantity } = useCart()
+  const currentQantity = checkDishQuantity(dishId)
 
   const incQuantity = () => {
-    setQuantity(quantity => quantity + 1)
-    changeDishQuantity(dishId, quantity + 1)
+    changeDishQuantity(dishId, currentQantity + 1)
   }
 
   const decQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity => quantity - 1)
-      changeDishQuantity(dishId, quantity - 1)
+    if (currentQantity > 1) {
+      changeDishQuantity(dishId, currentQantity - 1)
     }
     else {
-      setAdded(false)
-      setQuantity(0)
       removeFromCart(dishId)
     }
   }
   console.log(cartItems)
 
   const handleAdd = () => {
-    setAdded(true)
     incQuantity()
     addToCart({ id: dishId, image, price, name, quantity: 1 })
   }
 
   return (
     <Box className="max-w-[382px]">
-      {!added
+      {currentQantity === 0
         ? (
             <Button sx={{ bgcolor: '#FA4A0C', color: '#FFF' }} variant="contained" className="w-full h-[45px] rounded-2xl" onClick={handleAdd}>
               Add to cart
@@ -53,7 +46,7 @@ export default function AddToCart({ dishId, image, price, name }: AddToCartProps
               <Button sx={{ borderColor: '#FA4A0C', color: '#FFF' }} variant="outlined" className="w-full" onClick={decQuantity}>
                 -
               </Button>
-              <p className="mx-1 font-bold">{quantity}</p>
+              <p className="mx-1 font-bold">{currentQantity}</p>
               <Button sx={{ borderColor: '#FA4A0C', color: '#FFF' }} variant="outlined" className="w-full" onClick={incQuantity}>
                 +
               </Button>
