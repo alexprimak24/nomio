@@ -24,6 +24,10 @@ Nomio - is the yummiest food that can be delivered!
 ...
 
 ## Continure tomorrow
-- [ ] Optimize Images
+- [ ] Add all the logic connected with local storage (don't forget on dishes page to get dishes from local storage and)
+- [ ] Fix a bug with duplicate entry after the page reload
 - [ ] Change the structure of my pages and move all the ui stuff to the components folder
-- [ ] Make everything look pretty
+- [ ] Change RLCs for related to this part databases
+- [ ] Add Cart Page with form for additional data
+- [ ] Implement Auth
+- [ ] Send an order to db
