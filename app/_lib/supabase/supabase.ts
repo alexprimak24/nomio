@@ -1,5 +1,5 @@
 /* eslint-disable node/prefer-global/process */
-import type { Database } from '../types/supabase-types'
+import type { Database } from '@/app/types/supabase-types'
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = process.env.SUPABASE_URL

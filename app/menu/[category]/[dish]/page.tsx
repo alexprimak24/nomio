@@ -1,5 +1,5 @@
 import AddToCart from '@/app/_components/AddToCartBtn'
-import { getDish } from '@/app/_lib/db/queries'
+import { getDish } from '@/app/_lib/supabase/queries'
 import { Avatar, Box, Container, Divider, List, ListItem, Typography } from '@mui/material'
 import Grid from '@mui/material/Grid'
 import Image from 'next/image'

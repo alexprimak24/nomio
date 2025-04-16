@@ -58,21 +58,24 @@ export interface Database {
       customers: {
         Row: {
           created_at: string
+          email: string
           full_name: string
           id: number
-          phone_number: string
+          phone_number: string | null
         }
         Insert: {
           created_at?: string
+          email?: string
           full_name: string
           id?: number
-          phone_number: string
+          phone_number?: string | null
         }
         Update: {
           created_at?: string
+          email?: string
           full_name?: string
           id?: number
-          phone_number?: string
+          phone_number?: string | null
         }
         Relationships: []
       }

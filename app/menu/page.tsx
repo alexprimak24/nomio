@@ -1,7 +1,7 @@
 import { Box, List, ListItem } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
-import { getCategories } from '../_lib/db/queries'
+import { getCategories } from '../_lib/supabase/queries'
 
 export const metadata = {
   title: 'Menu',

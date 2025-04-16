@@ -1,6 +1,6 @@
 import AddToCart from '@/app/_components/AddToCartBtn'
-import { getCategoryDishes } from '@/app/_lib/db/queries'
-import { supabase } from '@/app/_lib/supabase'
+import { getCategoryDishes } from '@/app/_lib/supabase/queries'
+import { supabase } from '@/app/_lib/supabase/supabase'
 import { slugify } from '@/app/_utils/slugify'
 import { Box, Divider, Typography } from '@mui/material'
 import Image from 'next/image'

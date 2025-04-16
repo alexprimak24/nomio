@@ -26,6 +26,7 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <body className="bg-background text-text-primary flex flex-col min-h-svh relative">
             <Header />
+            {/* justify center remove and then setup normal style */}
             <div className="grid flex-1 px-4 py-6 md:px-8 md:py-12 justify-center">
               <main className="w-full flex flex-col items-center max-w-7xl">
                 <ThemeProvider theme={theme}>
