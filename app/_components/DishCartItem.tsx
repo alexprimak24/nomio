@@ -31,7 +31,7 @@ export default function DishCartItem({ id, image, name, price, quantity, onRemov
       }}
       className={"max-w-[360px] sm:max-w-[800px] "}
     >
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-5 min-w-[175px]">
         <Image
           src={image}
           alt={name}
