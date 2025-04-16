@@ -31,7 +31,7 @@ const CartContext = createContext<CartContextType | undefined>(
 function CartProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useLocalStorageState<DishInCartObj[]>([], 'cartItems')
   const totalAmount = cartItems.reduce((accumulator, currentValue) => accumulator + currentValue.price * currentValue.quantity, 0)
-
+  console.log(cartItems)
   const addToCart = useCallback((dish: DishInCartObj) => {
     setCartItems((prevCartItems) => {
       const existingDishIndex = prevCartItems.findIndex(item => item.id === dish.id)
@@ -46,17 +46,6 @@ function CartProvider({ children }: { children: ReactNode }) {
     })
   }, [setCartItems])
 
-  const changeDishQuantity = useCallback((id: number, newQuantity: number) => {
-    const updatedCart = cartItems.map((item) => {
-      if (item.id === id) {
-        return { ...item, quantity: newQuantity }
-      }
-      return item
-    })
-
-    setCartItems(updatedCart)
-  }, [cartItems, setCartItems])
-
   const clearCart = useCallback(() => {
     setCartItems([])
   }, [setCartItems])
@@ -67,8 +56,40 @@ function CartProvider({ children }: { children: ReactNode }) {
     setCartItems(updatedCart)
   }, [cartItems, setCartItems])
 
+  const changeDishQuantity = useCallback((id: number, newQuantity: number) => {
+    setCartItems((prevCartItems) => {
+      // My first version
+      // const dishIndex = prevCartItems.findIndex(item => item.id === id)
+      // if (dishIndex !== -1 && newQuantity <= 0) {
+      //   return prevCartItems.filter(dishCart => dishCart.id !== prevCartItems[dishIndex].id)
+      // }
+      // if (dishIndex !== -1 && newQuantity !== 0) {
+      //   const updatedCart = [...prevCartItems]
+      //   updatedCart[dishIndex] = {
+      //     ...updatedCart[dishIndex],
+      //     quantity: newQuantity,
+      //   }
+      //   return updatedCart
+      // }
+
+      // return prevCartItems
+
+      // What I came up with after some research
+      // this logic I love more and if the quantity is less than 1 we are just ignoring it and do not include in array
+      return prevCartItems.reduce((updatedCart, item) => {
+        if (item.id !== id) {
+          updatedCart.push(item)
+        }
+        else if (newQuantity > 0) {
+          updatedCart.push({ ...item, quantity: newQuantity })
+        }
+        return updatedCart
+      }, [] as typeof prevCartItems)
+    })
+  }, [setCartItems])
+
   const checkDishQuantity = useCallback((id: number) => {
-    const dish = cartItems.find(item=>item.id === id)
+    const dish = cartItems.find(item => item.id === id)
     return dish ? dish.quantity : 0
   }, [cartItems])
 
