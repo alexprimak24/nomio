@@ -79,7 +79,7 @@ async function Page({ params }: PageProps) {
             >
               {dish.description}
             </Typography>
-            <Typography variant="h6" sx={{color:"#0038FF"}} gutterBottom>
+            <Typography variant="h6" sx={{ color: '#0038FF' }} gutterBottom>
               $
               {dish.price.toFixed(2)}
             </Typography>

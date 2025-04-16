@@ -2,7 +2,7 @@
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
 import CloseIcon from '@mui/icons-material/Close'
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined'
-import { Box, Button, IconButton } from '@mui/material'
+import { Box, IconButton } from '@mui/material'
 import Image from 'next/image'
 
 interface DishCartItemProps {
@@ -29,7 +29,7 @@ export default function DishCartItem({ id, image, name, price, quantity, onRemov
         flexWrap: 'wrap',
         width: '100vw',
       }}
-      className={"max-w-[360px] sm:max-w-[800px] "}
+      className="max-w-[360px] sm:max-w-[800px] "
     >
       <div className="flex items-center gap-5 min-w-[175px]">
         <Image
@@ -51,22 +51,22 @@ export default function DishCartItem({ id, image, name, price, quantity, onRemov
             {price.toFixed(2)}
           </p>
           <div className="flex">
-            <button onClick={() => changeDishQuantity(id, quantity - 1)}>
+            <button type="button" onClick={() => changeDishQuantity(id, quantity - 1)}>
               <RemoveCircleOutlineOutlinedIcon sx={{ fill: '#FA4A0C' }} />
             </button>
             <p className="font-bold">
               x
               {quantity}
             </p>
-            <button onClick={() => changeDishQuantity(id, quantity + 1)}>
-            <AddCircleOutlineOutlinedIcon sx={{ fill: '#FA4A0C' }} />
-          </button>
+            <button type="button" onClick={() => changeDishQuantity(id, quantity + 1)}>
+              <AddCircleOutlineOutlinedIcon sx={{ fill: '#FA4A0C' }} />
+            </button>
           </div>
 
         </div>
       </div>
-      <IconButton onClick={() => onRemove(id)} >
-        <CloseIcon/>
+      <IconButton onClick={() => onRemove(id)}>
+        <CloseIcon />
       </IconButton>
     </Box>
   )

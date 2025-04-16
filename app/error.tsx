@@ -1,4 +1,4 @@
-'use client';
+'use client'
 // error boundary should always be a client component!!!
 
 // !!!!!! Only render errors will be shown there, not for ex some invalid func calls
@@ -6,8 +6,8 @@
 // is disappearing if we have an error, so we need to create a separate global error
 // and add these tags to make it work there
 interface ErrorProps {
-  error: Error & { digest?: string };
-  reset: () => void;
+  error: Error & { digest?: string }
+  reset: () => void
 }
 
 export default function Error({ error, reset }: ErrorProps) {
@@ -17,11 +17,12 @@ export default function Error({ error, reset }: ErrorProps) {
       <p className="text-lg">{error.message}</p>
 
       <button
+        type="button"
         onClick={reset}
         className="bg-accent-500 text-primary-800 inline-block px-6 py-3 text-lg"
       >
         Try again
       </button>
     </main>
-  );
+  )
 }

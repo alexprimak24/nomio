@@ -2,14 +2,13 @@ import CartDishesList from '@/app/_components/DishesCartList'
 import React from 'react'
 
 export const metadata = {
-    title: 'Cart',
-  }
-  
+  title: 'Cart',
+}
 
 function Page() {
   return (
     <>
-      <CartDishesList/>
+      <CartDishesList />
     </>
   )
 }

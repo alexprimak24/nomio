@@ -14,7 +14,6 @@ export async function generateMetadata({ params }: PageProps) {
   return { title: `${dish[0].toUpperCase() + dish.slice(1)}` }
 }
 
-
 async function Page({ params }: PageProps) {
   const { dish } = await params
   const { id, description, name, price, image, dish_ingredients } = await getDish(dish)
@@ -44,7 +43,7 @@ async function Page({ params }: PageProps) {
               {name}
             </Typography>
             <Typography variant="body1">{description}</Typography>
-            <Typography variant="h5" sx={{ mt: 2,color:"#0038FF" }}>
+            <Typography variant="h5" sx={{ mt: 2, color: '#0038FF' }}>
               $
               {price.toFixed(2)}
             </Typography>
@@ -62,7 +61,7 @@ async function Page({ params }: PageProps) {
         Ingredients
       </Typography>
 
-      <List sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, justifyContent:"center" }}>
+      <List sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, justifyContent: 'center' }}>
         {dish_ingredients.map(ingredient => (
           <ListItem
             key={ingredient.ingredients.id}
