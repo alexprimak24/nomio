@@ -1,6 +1,8 @@
 'use client'
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
 import CloseIcon from '@mui/icons-material/Close'
-import { Box, Grid, IconButton, Typography } from '@mui/material'
+import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined'
+import { Box, Button, IconButton } from '@mui/material'
 import Image from 'next/image'
 
 interface DishCartItemProps {
@@ -10,9 +12,10 @@ interface DishCartItemProps {
   price: number
   quantity: number
   onRemove: (id: number) => void
+  changeDishQuantity: (id: number, newQuantity: number) => void
 }
 
-export default function DishCartItem({ id, image, name, price, quantity, onRemove }: DishCartItemProps) {
+export default function DishCartItem({ id, image, name, price, quantity, onRemove, changeDishQuantity }: DishCartItemProps) {
   return (
     <Box
       sx={{
@@ -24,42 +27,46 @@ export default function DishCartItem({ id, image, name, price, quantity, onRemov
         alignItems: 'center',
         justifyContent: 'space-between',
         flexWrap: 'wrap',
+        width: '100vw',
+        maxWidth: '800px',
       }}
     >
-      <Grid container spacing={2} alignItems="center">
-        <Grid>
-          <Image
-            src={image}
-            alt={name}
-            width={60}
-            height={60}
-            style={{ borderRadius: 8 }}
-          />
-        </Grid>
+      <div className="flex items-center gap-5">
+        <Image
+          src={image}
+          alt={name}
+          width={60}
+          height={60}
+          style={{ borderRadius: 8 }}
+        />
 
-        <Grid size={{ xs: 12 }} spacing={1}>
-          <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-            <Typography variant="subtitle1">{name}</Typography>
-          </Grid>
-
-          <Grid size={{ xs: 6, sm: 3, md: 2 }}>
-            <Typography color="text.secondary">
-              Qty:
+        <div className="max-w-[100px]">
+          {name}
+        </div>
+      </div>
+      <div>
+        <div className="text-center">
+          <p className="text-sm">
+            $
+            {price.toFixed(2)}
+          </p>
+          <div className="flex">
+            <button onClick={() => changeDishQuantity(id, quantity - 1)}>
+              <RemoveCircleOutlineOutlinedIcon sx={{ fill: '#FA4A0C' }} />
+            </button>
+            <p className="font-bold">
+              x
               {quantity}
-            </Typography>
-          </Grid>
+            </p>
+            <button onClick={() => changeDishQuantity(id, quantity + 1)}>
+            <AddCircleOutlineOutlinedIcon sx={{ fill: '#FA4A0C' }} />
+          </button>
+          </div>
 
-          <Grid size={{ xs: 6, sm: 3, md: 2 }}>
-            <Typography color="text.secondary">
-              $
-              {price.toFixed(2)}
-            </Typography>
-          </Grid>
-        </Grid>
-      </Grid>
-
-      <IconButton onClick={() => onRemove(id)}>
-        <CloseIcon />
+        </div>
+      </div>
+      <IconButton onClick={() => onRemove(id)} >
+        <CloseIcon sx={{ fill: '#fff' }}/>
       </IconButton>
     </Box>
   )

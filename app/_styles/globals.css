@@ -27,3 +27,6 @@
   --breakpoint-amd: 900px;
   }
 
+button {
+  cursor: pointer;
+}
