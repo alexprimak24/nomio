@@ -18,7 +18,6 @@ interface CartContextType {
   totalAmount: number
   addToCart: (dish: DishInCartObj) => void
   changeDishQuantity: (id: number, newQuantity: number) => void
-  //   ALWAYS ADD  A POPUP ASKING WHETHER USER REALLY SURE
   clearCart: () => void
   removeFromCart: (id: number) => void
   checkDishQuantity: (id: number) => number
@@ -31,7 +30,6 @@ const CartContext = createContext<CartContextType | undefined>(
 function CartProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useLocalStorageState<DishInCartObj[]>([], 'cartItems')
   const totalAmount = cartItems.reduce((accumulator, currentValue) => accumulator + currentValue.price * currentValue.quantity, 0)
-  console.log(cartItems)
   const addToCart = useCallback((dish: DishInCartObj) => {
     setCartItems((prevCartItems) => {
       const existingDishIndex = prevCartItems.findIndex(item => item.id === dish.id)

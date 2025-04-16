@@ -5,7 +5,7 @@ function Loading() {
   return (
     <>
       <CircularProgress sx={{ color: '#FA4A0C' }} size="3rem" />
-      <p className="text-2xl mt-3">Loading dishes...</p>
+      <p className="text-2xl mt-3">Loading categories...</p>
     </>
   )
 }

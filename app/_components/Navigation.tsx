@@ -7,7 +7,6 @@ import { auth } from '../_lib/auth'
 
 async function Navigation() {
   const session = await auth()
-  console.log(session)
   return (
     <>
       <Cart />
@@ -24,7 +23,7 @@ async function Navigation() {
                 />
               </Link>
             )
-          : <IconButton><LoginOutlinedIcon sx={{ fill: '#FA4A0C' }} /></IconButton>}
+          : <Link href="/profile"><IconButton><LoginOutlinedIcon sx={{ fill: '#FA4A0C' }} /></IconButton></Link>}
       </div>
     </>
   )
