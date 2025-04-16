@@ -13,7 +13,7 @@ async function Page() {
   const categories = await getCategories()
 
   return (
-    <Box className="w-full max-w-2xl rounded-xl shadow-lg p-2 border border-border bg-background text-text-primary transition-all duration-300 ease-in-out px-5 py-2 text-center">
+    <Box className="min-w-[340px] sm:min-w-[550px] rounded-xl shadow-lg p-2 border border-border bg-background text-text-primary transition-all duration-300 ease-in-out px-5 py-3 sm:px-8 sm:py-5 text-center">
       <List className="w-full rounded-md text-center flex items-center justify-center flex-col gap-5">
         {categories.map(category => (
           <Link
