@@ -37,17 +37,17 @@ export default function AddToCart({ dishId, image, price, name }: AddToCartProps
     <Box className="max-w-[382px]">
       {currentQantity === 0
         ? (
-            <Button sx={{ bgcolor: '#FA4A0C', color: '#FFF' }} variant="contained" className="w-full h-[45px] rounded-2xl" onClick={handleAdd}>
+            <Button sx={{ bgcolor: '#FA4A0C', color: '#000' }} variant="contained" className="w-full h-[45px] rounded-2xl" onClick={handleAdd}>
               Add to cart
             </Button>
           )
         : (
             <div className="flex justify-between gap-3 items-center">
-              <Button sx={{ borderColor: '#FA4A0C', color: '#FFF' }} variant="outlined" className="w-full" onClick={decQuantity}>
+              <Button sx={{ borderColor: '#FA4A0C', color: '#000' }} variant="outlined" className="w-full" onClick={decQuantity}>
                 -
               </Button>
               <p className="mx-1 font-bold">{currentQantity}</p>
-              <Button sx={{ borderColor: '#FA4A0C', color: '#FFF' }} variant="outlined" className="w-full" onClick={incQuantity}>
+              <Button sx={{ borderColor: '#FA4A0C', color: '#000' }} variant="outlined" className="w-full" onClick={incQuantity}>
                 +
               </Button>
             </div>

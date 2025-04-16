@@ -28,8 +28,8 @@ export default function DishCartItem({ id, image, name, price, quantity, onRemov
         justifyContent: 'space-between',
         flexWrap: 'wrap',
         width: '100vw',
-        maxWidth: '800px',
       }}
+      className={"max-w-[360px] sm:max-w-[800px] "}
     >
       <div className="flex items-center gap-5">
         <Image
@@ -66,7 +66,7 @@ export default function DishCartItem({ id, image, name, price, quantity, onRemov
         </div>
       </div>
       <IconButton onClick={() => onRemove(id)} >
-        <CloseIcon sx={{ fill: '#fff' }}/>
+        <CloseIcon/>
       </IconButton>
     </Box>
   )

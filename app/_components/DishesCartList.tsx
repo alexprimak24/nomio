@@ -1,15 +1,26 @@
 'use client'
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import React from 'react'
 import { useCart } from '../_context/CartContext'
 import DishCartItem from './DishCartItem'
+import { Button } from '@mui/material'
+
 
 function CartDishesList() {
   const { cartItems, changeDishQuantity, clearCart, removeFromCart } = useCart()
+
+  function handleClearCart() {
+    if (confirm('Are u sure u wantto clear the cart?'))
+      // so by wrapping it into that function we can now use isPending
+      clearCart();
+  }
+
   return (
     <>
-    {!cartItems.length &&  <div>Your cart is empty</div> }
+    {!cartItems.length &&  <div className='flex text-center justify-center'><h1>Your cart is empty</h1></div> }
       {cartItems.length > 0
-        && cartItems.map(cartItem => (
+        && <>
+        {cartItems.map(cartItem => (
             <DishCartItem
               key={cartItem.id}
               id={cartItem.id}
@@ -20,8 +31,12 @@ function CartDishesList() {
               onRemove={removeFromCart}
               changeDishQuantity={changeDishQuantity}
             />
-            
-          ))
+          ))}
+          <Button sx={{ borderColor: '#FA4A0C', color: '#000', borderRadius:"30px" }} variant="outlined" className="w-[140px] h-[45px] rounded-2xl self-end" onClick={handleClearCart} startIcon={<RemoveShoppingCartIcon sx={{fill:"#000"}}/>}>
+           Clear cart
+          </Button>
+          </>
+          
         }
     </>
   )
