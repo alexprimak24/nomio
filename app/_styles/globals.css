@@ -10,20 +10,9 @@
   --color-accent-violet: #6E56CF;   
   --color-accent-teal: #00C49A;     
   --color-accent-blue: #0095FF;     
-
-  --color-dark-background: #121212;       
-  --color-dark-card: #1E1E1E;             
-  --color-text-dark-primary: #FFFFFF;     
-  --color-text-dark-muted: #AAAAAA;    
-  --color-dark-button: #FF6B5A;       
-  --color-accent-dark-indigo: #4C5FD5;   
-  --color-accent-dark-violet: #A891FF;     
-  --color-accent-dark-teal: #00E0B8;   
-  --color-accent-dark-blue: #4BA3FF;      
-
   --color-border:#d4dee7;
-  --color-dark-border: #AAAAAA;
-
+  --color-orange-primary:#FA4A0C;
+  
   --breakpoint-amd: 900px;
   }
 

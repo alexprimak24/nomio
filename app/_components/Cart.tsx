@@ -9,7 +9,7 @@ function Cart() {
   return (
     <Link href="/cart" className="bg-transparent rounded-full flex items-center justify-center w-10 h-10">
       <ShoppingCartOutlinedIcon />
-      <p className="mb-5 text-accent-violet dark:text-accent-dark-violet font-light">{cartItemsQuantity}</p>
+      <p className="mb-5 text-orange-primary font-light">{cartItemsQuantity}</p>
     </Link>
   )
 }

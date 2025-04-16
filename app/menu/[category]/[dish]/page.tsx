@@ -44,7 +44,7 @@ async function Page({ params }: PageProps) {
               {name}
             </Typography>
             <Typography variant="body1">{description}</Typography>
-            <Typography variant="h5" color="primary" sx={{ mt: 2 }}>
+            <Typography variant="h5" sx={{ mt: 2,color:"#0038FF" }}>
               $
               {price.toFixed(2)}
             </Typography>

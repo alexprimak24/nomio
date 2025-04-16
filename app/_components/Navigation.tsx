@@ -15,7 +15,7 @@ function Navigation() {
             alt="User Logo"
             fill
             quality={100}
-            className="rounded-full border-1 border-text-primary dark:border-text-dark-primary"
+            className="rounded-full border-1 border-text-primary "
           />
         </Link>
       </div>

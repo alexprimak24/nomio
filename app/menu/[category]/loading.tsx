@@ -4,7 +4,7 @@ import React from 'react'
 function Loading() {
   return (
     <div className="flex items-center justify-center">
-      <CircularProgress color="success" size="3rem" />
+      <CircularProgress sx={{color:"#FA4A0C"}} size="3rem" />
       <p className="text-xl mt-3">Loading category...</p>
     </div>
   )

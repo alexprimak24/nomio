@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en" className={sfPro.className}>
       <CartProvider>
         <AppRouterCacheProvider>
-          <body className="bg-background dark:bg-dark-background text-text-primary dark:text-text-dark-primary flex flex-col min-h-svh relative">
+          <body className="bg-background text-text-primary flex flex-col min-h-svh relative">
             <Header />
             <div className="grid flex-1 px-4 py-6 md:px-8 md:py-12 justify-center">
               <main className="w-full flex flex-col items-center max-w-7xl">

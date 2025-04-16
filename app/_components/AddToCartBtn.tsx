@@ -37,7 +37,7 @@ export default function AddToCart({ dishId, image, price, name }: AddToCartProps
     <Box className="max-w-[382px]">
       {currentQantity === 0
         ? (
-            <Button sx={{ bgcolor: '#FA4A0C', color: '#000' }} variant="contained" className="w-full h-[45px] rounded-2xl" onClick={handleAdd}>
+            <Button sx={{ bgcolor: '#FA4A0C', color: '#fff' }} variant="contained" className="w-full h-[45px] rounded-2xl" onClick={handleAdd}>
               Add to cart
             </Button>
           )
