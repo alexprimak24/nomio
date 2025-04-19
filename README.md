@@ -10,9 +10,9 @@ Nomio - is the yummiest food that can be delivered!
 - [X] Displayed dishes for a specific category
 - [x] Add fallbacks for loading, not found, error page
 - [x] Displayed specific dish
-- [ ] Make everything look pretty
-- [ ] Implement auth
-- [ ] Create global state for the cart and add ability to add items to the card
+- [x] Make everything look pretty
+- [x] Implement auth
+- [x] Create global state for the cart and add ability to add items to the card
 - [ ] Add complete order form
 - [ ] Send user order to the db
 - [ ] Build order page where user can modify order if status of the order hasn't changed yet to "cooking"
@@ -27,7 +27,7 @@ Nomio - is the yummiest food that can be delivered!
 - [x] Add all the logic connected with local storage (don't forget on dishes page to get dishes from local storage and)
 - [x] Fix a bug with duplicate entry after the page reload
 - [x] Change the structure of my pages and move all the ui stuff to the components folder
-- [ ] Change RLCs for related to this part databases
+- [x] Change RLCs for related to this part databases
 - [ ] Add Cart Page with form for additional data
 - [ ] Implement Auth
 - [ ] Send an order to db
