@@ -1,6 +1,8 @@
 'use client'
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { Button } from '@mui/material'
+import Link from 'next/link'
 import React from 'react'
 import { useCart } from '../_context/CartContext'
 import DishCartItem from './DishCartItem'
@@ -33,9 +35,15 @@ function CartDishesList() {
                 changeDishQuantity={changeDishQuantity}
               />
             ))}
-            <Button sx={{ borderColor: '#FA4A0C', color: '#000', borderRadius: '30px' }} variant="outlined" className="w-[140px] h-[45px] rounded-2xl self-end" onClick={handleClearCart} startIcon={<RemoveShoppingCartIcon sx={{ fill: '#000' }} />}>
-              Clear cart
-            </Button>
+            <div className="self-end">
+              <Button sx={{ borderColor: '#FA4A0C', color: '#000', borderRadius: '30px', marginRight: "20px" }} variant="outlined" className="w-[140px] h-[45px] rounded-2xl" onClick={handleClearCart} startIcon={<RemoveShoppingCartIcon sx={{ fill: '#000' }} />}>
+                Clear cart
+              </Button>
+              <Button component={Link} href="/checkout" sx={{ background: '#FA4A0C', color: '#fff', borderRadius: '30px' }} variant="contained" className="w-[140px] h-[45px] rounded-2xl" startIcon={<CheckCircleIcon sx={{ fill: '#fff' }} />}>
+                Checkout
+              </Button>
+            </div>
+
           </>
         )}
     </>
