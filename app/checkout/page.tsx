@@ -1,10 +1,12 @@
 import React from 'react'
+import CheckoutForm from '../_components/CheckoutForm'
 
 function Page() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <h1 className='font-bold text-2xl'>Complete your order</h1>
+      <CheckoutForm/>
+    </>
   )
 }
 
