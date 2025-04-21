@@ -1,11 +1,17 @@
 import React from 'react'
 import CheckoutForm from '../_components/CheckoutForm'
+import { auth } from '../_lib/auth'
 
-function Page() {
+async function Page() {
+  const session = await auth()
   return (
     <>
-      <h1 className='font-bold text-2xl'>Complete your order</h1>
-      <CheckoutForm/>
+      <h1 className="font-bold text-2xl">Complete your order</h1>
+      <CheckoutForm
+        email={session?.user.email}
+        name={session?.user.name}
+        customerId={session?.user.customerId}
+      />
     </>
   )
 }
