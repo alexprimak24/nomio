@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { TimePicker } from '@mui/x-date-pickers/TimePicker'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -64,14 +65,44 @@ function CheckoutForm({ email, name }: CheckoutFormProps) {
           control={control}
           name="delivery_date"
           render={({ field: { onChange, value } }) => (
-            <DatePicker
-              label="Controlled picker"
-              selected={value}
-              onChange={onChange}
-            />
+            <>
+              <DatePicker
+                label="Select delivery date"
+                disablePast
+                defaultValue={new Date}
+                onChange={(newDate) => {
+                  if (newDate && value) {
+                    const updatedDate = new Date(value)
+                    updatedDate.setFullYear(newDate.getFullYear())
+                    updatedDate.setMonth(newDate.getMonth())
+                    updatedDate.setDate(newDate.getDate())
+                    onChange(updatedDate)
+                  }
+                  else {
+                    onChange(newDate)
+                  }
+                }}
+              />
+              <TimePicker
+                label="Select delivery time"
+                defaultValue={new Date}
+                onChange={(newTime) => {
+                  if (newTime && value) {
+                    const updatedDate = new Date(value)
+                    updatedDate.setHours(newTime.getHours())
+                    updatedDate.setMinutes(newTime.getMinutes())
+                    updatedDate.setSeconds(0)
+                    updatedDate.setMilliseconds(0)
+                    onChange(updatedDate)
+                  }
+                  else {
+                    onChange(newTime)
+                  }
+                }}
+              />
+            </>
           )}
         />
-        {/* <input {...register('delivery_date')} type="text" placeholder="Delivery Date" defaultValue="2025-04-23 14:30:00" /> */}
         {errors.delivery_date && <div>{errors.delivery_date.message}</div>}
         <select {...register('payment_method')} defaultValue="card">
           <option value="card">Card online</option>
