@@ -1,9 +1,11 @@
 'use client'
 import type { FormFields } from '@/app/types/formSchema'
 import type { SubmitHandler } from 'react-hook-form'
+import { useCart } from '@/app/_context/CartContext'
 import { createOrder } from '@/app/_lib/actions'
 import { schema } from '@/app/types/formSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -14,6 +16,9 @@ interface CheckoutFormProps {
 }
 
 function CheckoutForm({ email, name }: CheckoutFormProps) {
+  const { cartItems, clearCart } = useCart()
+  const router = useRouter()
+
   const {
     register,
     handleSubmit,
@@ -29,8 +34,11 @@ function CheckoutForm({ email, name }: CheckoutFormProps) {
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
-      console.log(data)
-      await createOrder(data)
+      await createOrder(data, cartItems)
+
+      clearCart()
+
+      router.push('/thankyou')
     }
     catch (error) {
       setError('email', {

@@ -61,21 +61,18 @@ export interface Database {
           email: string
           full_name: string
           id: number
-          phone_number: string | null
         }
         Insert: {
           created_at?: string
           email?: string
           full_name: string
           id?: number
-          phone_number?: string | null
         }
         Update: {
           created_at?: string
           email?: string
           full_name?: string
           id?: number
-          phone_number?: string | null
         }
         Relationships: []
       }
@@ -249,6 +246,7 @@ export interface Database {
           is_paid: boolean
           observations: string | null
           payment_method: string
+          phone_number: string
           public_id: string
           status: string
           user_id: number
@@ -260,6 +258,7 @@ export interface Database {
           is_paid?: boolean
           observations?: string | null
           payment_method: string
+          phone_number: string
           public_id: string
           status: string
           user_id: number
@@ -271,6 +270,7 @@ export interface Database {
           is_paid?: boolean
           observations?: string | null
           payment_method?: string
+          phone_number?: string
           public_id?: string
           status?: string
           user_id?: number

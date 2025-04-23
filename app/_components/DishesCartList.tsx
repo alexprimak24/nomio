@@ -17,8 +17,6 @@ function CartDishesList() {
       clearCart()
   }
 
-  console.log(cartItems)
-
   return (
     <>
       {!cartItems.length && <div className="flex text-center justify-center"><h1>Your cart is empty</h1></div> }
