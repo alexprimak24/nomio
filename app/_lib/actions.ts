@@ -17,10 +17,10 @@ export async function signOutAction() {
 export async function createOrder(orderData: FormFields, cartItems: DishInCartObj[]) {
   const session = await auth()
   if (!session || !session.user.customerId)
-    throw new Error('You must be logged in')
+    return { error: 'You must be logged in' }
 
   if (cartItems.length === 0) {
-    throw new Error('Please add some items to the cart')
+    return { error: 'Please add some items to the cart' }
   }
 
   const newOrder = {
@@ -43,8 +43,7 @@ export async function createOrder(orderData: FormFields, cartItems: DishInCartOb
     .single()
 
   if (error) {
-    console.error(error)
-    throw new Error('Order can`t be created')
+    return { error: 'Order can`t be created' }
   }
 
   const cartItemsObj = cartItems.map((cartItem) => {
@@ -56,7 +55,6 @@ export async function createOrder(orderData: FormFields, cartItems: DishInCartOb
     .insert(cartItemsObj)
 
   if (orderItemsErr) {
-    console.error(orderItemsErr)
-    throw new Error('Dishes can`t be added to the table')
+    return { error: 'Dishes can`t be added to the table' }
   }
 }
