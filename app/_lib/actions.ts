@@ -4,7 +4,6 @@ import type { DishInCartObj } from '@/app/_context/CartContext'
 import type { FormFields } from '@/app/types/formSchema'
 import { auth, signIn, signOut } from '@/app/_lib/auth'
 import { nanoid } from 'nanoid'
-import { redirect } from 'next/navigation'
 import { supabase } from './supabase/supabase'
 
 export async function signInAction() {
@@ -20,13 +19,17 @@ export async function createOrder(orderData: FormFields, cartItems: DishInCartOb
   if (!session || !session.user.customerId)
     throw new Error('You must be logged in')
 
+  if (cartItems.length === 0) {
+    throw new Error('Please add some items to the cart')
+  }
+
   const newOrder = {
     public_id: nanoid(8),
     status: 'Received',
     is_paid: orderData.payment_method === 'card',
     payment_method: orderData.payment_method,
     observations: orderData.additional_comments ?? '',
-    delivery_date: orderData.delivery_date,
+    delivery_date: orderData.delivery_date.toISOString(),
     phone_number: orderData.phone_number,
     user_id: Number(session?.user.customerId),
   }
