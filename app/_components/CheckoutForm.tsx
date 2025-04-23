@@ -1,31 +1,19 @@
 'use client'
+import type { FormFields } from '@/app/types/formSchema'
 import type { SubmitHandler } from 'react-hook-form'
+import { createOrder } from '@/app/_lib/actions'
+import { schema } from '@/app/types/formSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 interface CheckoutFormProps {
   email: string
   name: string
-  customerId: number
-
 }
 
-const schema = z.object({
-  // ensures that it is a sting, then it checked that it is actually a valid email
-  email: z.string().email(),
-  name: z.string().min(2),
-  phone_number: z.string().min(5).max(15),
-  delivery_date: z.string(),
-  payment_method: z.string(),
-  additional_comments: z.string().max(1000)
-})
-
-// you don't even need to add types, they just come aotomatically
-type FormFields = z.infer<typeof schema>
-
-function CheckoutForm({ email, name, customerId }: CheckoutFormProps) {
+function CheckoutForm({ email, name }: CheckoutFormProps) {
   const {
     register,
     handleSubmit,
@@ -41,8 +29,8 @@ function CheckoutForm({ email, name, customerId }: CheckoutFormProps) {
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
       console.log(data)
+      await createOrder(data)
     }
     catch (error) {
       setError('email', {
@@ -53,14 +41,14 @@ function CheckoutForm({ email, name, customerId }: CheckoutFormProps) {
 
   return (
     // that approeach will help us to preventDefault + will validate that all the form fields are valid before calling onSubmit
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register('name')} type="name" placeholder="Name" />
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
+      <input {...register('name')} type="text" placeholder="Name" />
       {errors.name && <div>{errors.name.message}</div>}
       <input {...register('email')} type="text" placeholder="Email" />
       {errors.email && <div>{errors.email.message}</div>}
-      <input {...register('phone_number')} type="phone_number" placeholder="Phone Number" />
+      <input {...register('phone_number')} type="text" placeholder="Phone Number" />
       {errors.phone_number && <div>{errors.phone_number.message}</div>}
-      <input {...register('delivery_date')} type="text" placeholder="Delivery Date" />
+      <input {...register('delivery_date')} type="text" placeholder="Delivery Date" defaultValue="2025-04-23 14:30:00" />
       {errors.delivery_date && <div>{errors.delivery_date.message}</div>}
       <input {...register('payment_method')} type="text" placeholder="Payment Method" />
       {errors.payment_method && <div>{errors.payment_method.message}</div>}

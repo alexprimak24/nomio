@@ -1,6 +1,6 @@
 'use client'
-import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart'
 import { Button } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
@@ -16,6 +16,8 @@ function CartDishesList() {
       // so by wrapping it into that function we can now use isPending
       clearCart()
   }
+
+  console.log(cartItems)
 
   return (
     <>
