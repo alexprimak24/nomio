@@ -2,6 +2,10 @@ import React from 'react'
 import CheckoutForm from '../_components/CheckoutForm'
 import { auth } from '../_lib/auth'
 
+export const metadata = {
+  title: 'Checkout',
+};
+
 async function Page() {
   const session = await auth()
   return (

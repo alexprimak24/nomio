@@ -1,5 +1,9 @@
 import Link from 'next/link';
 
+export const metadata = {
+  title: 'Thank you',
+};
+
 export default function Page() {
   return (
     <div className="mt-4 space-y-6 text-center">
