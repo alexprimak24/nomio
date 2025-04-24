@@ -89,6 +89,11 @@ function CheckoutForm({ email, name }: CheckoutFormProps) {
           render={({ field: { onChange, value } }) => (
             <div className="flex flex-col gap-2">
               <DatePicker
+                sx={{
+                  '& .MuiPickersInputBase-sectionsContainer': {
+                    padding: '9.5px 0',
+                  },
+                }}
                 label="Select delivery date"
                 disablePast
                 defaultValue={new Date()}
@@ -106,6 +111,14 @@ function CheckoutForm({ email, name }: CheckoutFormProps) {
                 }}
               />
               <TimePicker
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: '12px',
+                  },
+                  '& .MuiPickersInputBase-sectionsContainer': {
+                    padding: '9.5px 0',
+                  },
+                }}
                 label="Select delivery time"
                 defaultValue={new Date()}
                 onChange={(newTime) => {
