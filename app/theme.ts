@@ -11,8 +11,8 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#FA4A0C',
-    },  
-},
+    },
+  },
 // components: {
 //   MuiPickersDay: {
 //     styleOverrides: {

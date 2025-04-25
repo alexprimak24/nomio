@@ -1,5 +1,5 @@
-import { signOutAction } from '@/app/_lib/actions';
-import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+import { signOutAction } from '@/app/_lib/actions'
+import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined'
 
 function SignOutButton() {
   return (
@@ -9,7 +9,7 @@ function SignOutButton() {
         <span>Sign out</span>
       </button>
     </form>
-  );
+  )
 }
 
-export default SignOutButton;
+export default SignOutButton

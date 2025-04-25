@@ -1,8 +1,8 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
 export const metadata = {
   title: 'Thank you',
-};
+}
 
 export default function Page() {
   return (
@@ -17,5 +17,5 @@ export default function Page() {
         Manage your orders &rarr;
       </Link>
     </div>
-  );
+  )
 }

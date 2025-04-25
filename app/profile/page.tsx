@@ -15,13 +15,13 @@ async function Page() {
     <>
       {session?.user
         ? (
-          <div className='flex justify-between items-center w-full'>
-            <p>
-              Welcome,
-              {' '}
-              {firstName}
-            </p>
-            <SignOutButton />
+            <div className="flex justify-between items-center w-full">
+              <p>
+                Welcome,
+                {' '}
+                {firstName}
+              </p>
+              <SignOutButton />
             </div>
           )
         : (<LoginMessage />)}

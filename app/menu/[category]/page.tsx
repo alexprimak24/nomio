@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export async function generateStaticParams() {
   const { data } = await supabase.from('categories').select('slug')
-  return data?.map(cat => ({ category: String(cat.slug) }))
+  return data?.map(cat => ({ category: String(cat.slug) })) ?? []
 }
 
 export const revalidate = 3600

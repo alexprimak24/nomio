@@ -11,7 +11,7 @@ export interface AddToCartProps {
 }
 
 export default function AddToCart({ dishId, image, price, name }: AddToCartProps) {
-  const { cartItems, addToCart, changeDishQuantity, removeFromCart, checkDishQuantity } = useCart()
+  const { addToCart, changeDishQuantity, removeFromCart, checkDishQuantity } = useCart()
   const currentQantity = checkDishQuantity(dishId)
 
   const incQuantity = () => {
@@ -26,7 +26,6 @@ export default function AddToCart({ dishId, image, price, name }: AddToCartProps
       removeFromCart(dishId)
     }
   }
-  console.log(cartItems)
 
   const handleAdd = () => {
     incQuantity()

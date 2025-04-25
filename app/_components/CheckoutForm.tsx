@@ -47,7 +47,7 @@ function CheckoutForm({ email, name }: CheckoutFormProps) {
 
       router.push('/thankyou')
     }
-    catch (error) {
+    catch {
       console.error('There is an error with form submission')
     }
   }
@@ -112,6 +112,7 @@ function CheckoutForm({ email, name }: CheckoutFormProps) {
               />
               <TimePicker
                 sx={{
+                  'marginTop': '12px',
                   '& .MuiOutlinedInput-root': {
                     borderRadius: '12px',
                   },
