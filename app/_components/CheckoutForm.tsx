@@ -93,6 +93,10 @@ function CheckoutForm({ email, name }: CheckoutFormProps) {
                   '& .MuiPickersInputBase-sectionsContainer': {
                     padding: '9.5px 0',
                   },
+                  '& .MuiPickersOutlinedInput-notchedOutline': {
+                    borderRadius: '12px',
+                    borderColor: '#D1D5DC',
+                  },
                 }}
                 label="Select delivery date"
                 disablePast
@@ -113,11 +117,12 @@ function CheckoutForm({ email, name }: CheckoutFormProps) {
               <TimePicker
                 sx={{
                   'marginTop': '12px',
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: '12px',
-                  },
                   '& .MuiPickersInputBase-sectionsContainer': {
                     padding: '9.5px 0',
+                  },
+                  '& .MuiPickersOutlinedInput-notchedOutline': {
+                    borderRadius: '12px',
+                    borderColor: '#D1D5DC',
                   },
                 }}
                 label="Select delivery time"
