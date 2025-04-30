@@ -9,7 +9,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { TimePicker } from '@mui/x-date-pickers/TimePicker'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
@@ -21,7 +21,7 @@ interface CheckoutFormProps {
 function CheckoutForm({ email, name }: CheckoutFormProps) {
   const { cartItems, clearCart } = useCart()
   const router = useRouter()
-
+  const searchParams = useSearchParams()
   const {
     register,
     handleSubmit,
@@ -38,14 +38,19 @@ function CheckoutForm({ email, name }: CheckoutFormProps) {
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
-      const error = await createOrder(data, cartItems)
+      const order = await createOrder(data, cartItems)
 
-      if (error?.error) {
-        setError('root', { message: error.error })
+      if ('error' in order) {
+        setError('root', { message: order.error })
       }
-      clearCart()
+      else {
+        clearCart()
 
-      router.push('/thankyou')
+        const params = new URLSearchParams(searchParams)
+        params.set('order', order.public_id)
+
+        router.replace(`/thankyou?${params.toString()}`)
+      }
     }
     catch {
       console.error('There is an error with form submission')

@@ -2,6 +2,7 @@
 
 import type { DishInCartObj } from '@/app/_context/CartContext'
 import type { FormFields } from '@/app/types/formSchema'
+import type { Order } from '../types/db'
 import { auth, signIn, signOut } from '@/app/_lib/auth'
 import { nanoid } from 'nanoid'
 import { supabase } from './supabase/supabase'
@@ -14,7 +15,7 @@ export async function signOutAction() {
   await signOut({ redirectTo: '/menu' })
 }
 
-export async function createOrder(orderData: FormFields, cartItems: DishInCartObj[]) {
+export async function createOrder(orderData: FormFields, cartItems: DishInCartObj[]): Promise<Order | { error: string }> {
   const session = await auth()
   if (!session || !session.user.customerId)
     return { error: 'You must be logged in' }
@@ -34,7 +35,7 @@ export async function createOrder(orderData: FormFields, cartItems: DishInCartOb
     user_id: Number(session?.user.customerId),
   }
 
-  const { data, error } = await supabase
+  const { data: orderDataRes, error: orderError } = await supabase
     .from('orders')
     .insert([
       newOrder,
@@ -42,12 +43,12 @@ export async function createOrder(orderData: FormFields, cartItems: DishInCartOb
     .select()
     .single()
 
-  if (error) {
+  if (orderError || !orderDataRes) {
     return { error: 'Order can`t be created' }
   }
 
   const cartItemsObj = cartItems.map((cartItem) => {
-    return { order_id: data.id, dish_id: cartItem.id, quantity: cartItem.quantity }
+    return { order_id: orderDataRes.id, dish_id: cartItem.id, quantity: cartItem.quantity }
   })
 
   const { error: orderItemsErr } = await supabase
@@ -57,4 +58,6 @@ export async function createOrder(orderData: FormFields, cartItems: DishInCartOb
   if (orderItemsErr) {
     return { error: 'Dishes can`t be added to the table' }
   }
+
+  return orderDataRes
 }
