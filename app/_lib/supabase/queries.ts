@@ -81,3 +81,25 @@ export async function createCustomer({ fullName, email }: { fullName: string, em
 
   return data
 }
+
+export async function getDishesOfOrderByPublicId(publicId: string) {
+  const { data, error } = await supabase
+    .from('orders')
+    .select(`
+    order_items (
+      *,
+      dishes (
+        *
+      )
+    )
+  `)
+    .eq('public_id', publicId)
+    .single()
+
+  if (error) {
+    console.error(error)
+    throw new Error('Failed to load dishes for that order id')
+  }
+
+  return data
+}

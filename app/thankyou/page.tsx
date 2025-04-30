@@ -4,13 +4,14 @@ export const metadata = {
   title: 'Thank you',
 }
 
-export default function Page({ searchParams }: { searchParams: { order: string } }) {
+export default async function Page({ searchParams }: { searchParams: { order: string } }) {
+  const orderId = await searchParams.order
   return (
     <div className="mt-4 space-y-6 text-center">
       <h1 className="text-3xl font-semibold">
-        Thank you for your order! You your order id is
+        Thank you for your order! You your order is
         {' '}
-        <span className='text-orange-primary'>{searchParams.order}</span>
+        <Link href={`/order/${orderId}`} className="text-orange-primary">{orderId}</Link>
       </h1>
 
       <Link

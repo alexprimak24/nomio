@@ -4,7 +4,7 @@ import type { DishInCartObj } from '@/app/_context/CartContext'
 import type { FormFields } from '@/app/types/formSchema'
 import type { Order } from '../types/db'
 import { auth, signIn, signOut } from '@/app/_lib/auth'
-import { nanoid } from 'nanoid'
+import { customAlphabet } from 'nanoid'
 import { supabase } from './supabase/supabase'
 
 export async function signInAction() {
@@ -23,9 +23,9 @@ export async function createOrder(orderData: FormFields, cartItems: DishInCartOb
   if (cartItems.length === 0) {
     return { error: 'Please add some items to the cart' }
   }
-
+  const generatePublicOrderId = customAlphabet('0123456789', 8)
   const newOrder = {
-    public_id: nanoid(8),
+    public_id: generatePublicOrderId(),
     status: 'Received',
     is_paid: orderData.payment_method === 'card',
     payment_method: orderData.payment_method,
