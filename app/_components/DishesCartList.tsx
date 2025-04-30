@@ -19,7 +19,12 @@ function CartDishesList() {
 
   return (
     <>
-      {!cartItems.length && <div className="flex text-center justify-center"><h1>Your cart is empty</h1></div> }
+      {!cartItems.length
+        && (
+          <div className="flex text-center justify-center text-2xl font-semibold">
+            <h1>Your cart is empty</h1>
+          </div>
+        ) }
       {cartItems.length > 0
         && (
           <>

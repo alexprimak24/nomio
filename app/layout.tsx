@@ -28,7 +28,7 @@ export default function RootLayout({
             <Header />
             {/* justify center remove and then setup normal style */}
             <div className="grid flex-1 px-4 py-6 md:px-8 md:py-12 justify-center">
-              <main className="w-full flex flex-col items-center max-w-7xl">
+              <main className="w-full max-w-7xl">
                 <ThemeProvider theme={theme}>
                   {children}
                 </ThemeProvider>

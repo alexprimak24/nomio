@@ -29,7 +29,7 @@ export default function DishCartItem({ id, image, name, price, quantity, onRemov
         flexWrap: 'wrap',
         width: '100vw',
       }}
-      className="max-w-[360px] sm:max-w-[800px] "
+      className="max-w-[360px] sm:max-w-[800px]"
     >
       <div className="flex items-center gap-5 min-w-[175px]">
         <Image
