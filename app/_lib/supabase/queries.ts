@@ -103,3 +103,25 @@ export async function getDishesOfOrderByPublicId(publicId: string) {
 
   return data
 }
+
+export async function getOrdersOfSpecificUser(userId: number) {
+  const { data, error } = await supabase
+    .from('orders')
+    .select(`
+    public_id,
+    order_items (
+      *,
+      dishes (
+        *
+      )
+    )
+  `)
+    .eq('user_id', userId)
+
+  if (error) {
+    console.error(error)
+    throw new Error('Failed to load orders for a specific user')
+  }
+
+  return data
+}
