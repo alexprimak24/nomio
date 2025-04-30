@@ -17,11 +17,11 @@ function OrderItem({ orderId, totalSum, dishImages }: OrderItemProps) {
         component={Link}
         href={`/order/${orderId}`}
         sx={{
-          border: '1px solid #e5e7eb',
-          borderRadius: 3,
-          p: 2.5,
-          bgcolor: '#fff',
-          transition: '0.3s ease',
+          'border': '1px solid #e5e7eb',
+          'borderRadius': 3,
+          'p': 2.5,
+          'bgcolor': '#fff',
+          'transition': '0.3s ease',
           '&:hover': {
             boxShadow: '0 8px 30px rgba(0,0,0,0.05)',
             transform: 'translateY(-2px)',
@@ -33,7 +33,8 @@ function OrderItem({ orderId, totalSum, dishImages }: OrderItemProps) {
         <div className="flex items-center gap-6 min-w-0 flex-wrap">
           {/* Order ID */}
           <div className="text-orange-primary text-base font-semibold font-mono truncate min-w-[70px]">
-            #{orderId}
+            #
+            {orderId}
           </div>
 
           {/* Dish Images */}
@@ -53,7 +54,8 @@ function OrderItem({ orderId, totalSum, dishImages }: OrderItemProps) {
 
         {/* Total Price */}
         <div className="text-gray-600 font-semibold text-right text-lg ml-auto">
-          ${totalSum.toFixed(2)}
+          $
+          {totalSum.toFixed(2)}
         </div>
       </Box>
     </li>

@@ -28,7 +28,7 @@ async function Page() {
               <SignOutButton />
             </div>
             <div className="mt-8 space-y-4">
-              <p className='text-xl font-semibold'>Order History:</p>
+              <p className="text-xl font-semibold">Order History:</p>
               {orders.map((order) => {
                 const orderAmount = order.order_items.reduce((accumulator, currentValue) => accumulator + (currentValue.quantity * currentValue.dishes.price), 0)
 

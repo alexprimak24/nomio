@@ -1,6 +1,7 @@
-import { Box, Button, List, ListItem } from '@mui/material'
+import { Box, List, ListItem } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
+import OrderSearch from '../_components/OrderSearch'
 import { getCategories } from '../_lib/supabase/queries'
 
 export const metadata = {
@@ -37,17 +38,7 @@ async function Page() {
           ))}
         </List>
       </Box>
-
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-1 py-2 sm:py-4 max-w-[550px] mx-auto mt-5">
-        <p className="text-gray-700 font-medium text-lg sm:text-xl">
-          Already have an order?
-        </p>
-        <input
-          type="text"
-          placeholder="Enter your order ID"
-          className="w-full sm:w-auto border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-primary transition-all duration-200 ease-in-out"
-        />
-      </div>
+      <OrderSearch />
     </>
 
   )

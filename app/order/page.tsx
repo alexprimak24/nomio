@@ -1,17 +1,5 @@
-import React from 'react'
+import { redirect } from 'next/navigation'
 
-export const metadata = {
-  title: 'Check Order',
+export default function Page() {
+  redirect('/menu')
 }
-
-
-function Page() {
-  return (
-    <>
-      <h1>Please enter your order id</h1>
-      <input/>
-    </>
-  )
-}
-
-export default Page

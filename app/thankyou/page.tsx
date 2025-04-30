@@ -4,7 +4,7 @@ export const metadata = {
   title: 'Thank you',
 }
 
-export default async function Page({ searchParams }: { searchParams: { order: string } }) {
+export default async function Page({ searchParams }: { searchParams: any }) {
   const orderId = await searchParams.order
   return (
     <div className="mt-4 space-y-6 text-center">
