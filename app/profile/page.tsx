@@ -27,17 +27,21 @@ async function Page() {
               </p>
               <SignOutButton />
             </div>
-            <div className="mt-8 space-y-4">
-              <p className="text-xl font-semibold">Order History:</p>
-              {orders.map((order) => {
-                const orderAmount = order.order_items.reduce((accumulator, currentValue) => accumulator + (currentValue.quantity * currentValue.dishes.price), 0)
+            {orders.length > 0
+              ? (
+                  <div className="mt-8 space-y-4">
+                    <p className="text-xl font-semibold">Order History:</p>
+                    {orders.map((order) => {
+                      const orderAmount = order.order_items.reduce((accumulator, currentValue) => accumulator + (currentValue.quantity * currentValue.dishes.price), 0)
 
-                const orderImages = order.order_items.map(item => item.dishes.image)
+                      const orderImages = order.order_items.map(item => item.dishes.image)
 
-                return <OrderItem key={order.public_id} orderId={order.public_id} totalSum={orderAmount} dishImages={orderImages} />
-              },
-              )}
-            </div>
+                      return <OrderItem key={order.public_id} orderId={order.public_id} totalSum={orderAmount} dishImages={orderImages} />
+                    },
+                    )}
+                  </div>
+                )
+              : <p className="text-xl font-semibold">You don't have orders yet 😜</p>}
           </div>
         )}
 
