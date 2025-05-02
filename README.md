@@ -19,6 +19,6 @@ Nomio - is the yummiest food that can be delivered!
 - [ ] Build Landing
 
 ## If I want to continue with that project
-- [ ] Load order history of specific user
+- [X] Load order history of specific user
 - [ ] Email notification of received order
 ...
